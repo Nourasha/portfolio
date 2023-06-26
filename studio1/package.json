@@ -1,0 +1,37 @@
+{
+  "name": "studio1",
+  "private": true,
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)",
+  "main": "package.json",
+  "author": "Nourasha <nour.ash@hotmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.29.1",
+    "@sanity/core": "^2.28.1",
+    "@sanity/default-layout": "^2.29.1",
+    "@sanity/default-login": "^2.29.1",
+    "@sanity/desk-tool": "^2.29.1",
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "@sanity/vision": "^2.29.1",
+    "eslint": "^8.6.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "react-icons": "^4.9.0",
+    "react-router-dom": "^6.3.0",
+    "react-social-icons": "^5.13.0",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.2",
+    "tailwindcss": "^3.0.24"
+  }
+}

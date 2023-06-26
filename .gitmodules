@@ -1,0 +1,6 @@
+[submodule "my-project"]
+	path = my-project
+	url = https://github.com/Nourasha/my-project.git
+[submodule "vendors"]
+	path = vendors
+	url = https://github.com/Nourasha/my-portfolio.git
