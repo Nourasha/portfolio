@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import sanityClient from "../lib/client";
 import Fade from "react-reveal/Fade";
 
@@ -27,7 +27,7 @@ export default function Project() {
         <h1 className="text-5xl flex justify-center cursive">My Projects</h1>
         <h2 className="text-lg text-gray-600 flex justify-center mb-12 mt-6">Welcome to my projects page!</h2>
         <section className="grid md:grid-cols-2 gap-8">
-          {projectData && projectData.map((project, index) => (
+          {projectData && projectData.map((project) => (
             <Fade bottom big>
           <article className="relative rounded-lg shadow-xl bg-white p-16">
             <h3 className="text-gray-800 text-3xl font-bold mb-2 hover:text-red-700">

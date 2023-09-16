@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from '../pages/Home';
 import About from '../pages/About';
@@ -5,6 +6,7 @@ import SinglePost from '../pages/SinglePost';
 import Post from '../pages/post';
 import Project from '../pages/Project';
 import NavBar from "../components/NavBar";
+
 
 
 export default function RoutePage () {
