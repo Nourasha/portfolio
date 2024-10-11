@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 import sanityClient from "../lib/client";
-import Fade from "react-reveal/Fade";
 
 
 export default function Project() {
@@ -28,7 +27,7 @@ export default function Project() {
         <h2 className="text-lg text-gray-600 flex justify-center mb-12 mt-6">Welcome to my projects page!</h2>
         <section className="grid md:grid-cols-2 gap-8">
           {projectData && projectData.map((project) => (
-            <Fade bottom big>
+
           <article className="relative rounded-lg shadow-xl bg-white p-16">
             <h3 className="text-gray-800 text-3xl font-bold mb-2 hover:text-red-700">
               <a
@@ -56,12 +55,11 @@ export default function Project() {
               </p>
               <a href={project.link} rel="noopener noreferrer" target="_blank" className="text-red-500 font-bold hover:underline hover:text-red-400 text-xl"
               >
-                View The Project{" "}
+                View The Projects code on GitHub{" "}
                 <span role="img" aria-label="right pointer">👉</span>
               </a>
             </div>
           </article>
-          </Fade>
           ))}
         </section>
       </section>

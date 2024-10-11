@@ -1,9 +1,9 @@
-import { Fade } from "react-reveal";
+
 import { Link } from "react-router-dom";
 
 export default function PostCards({ title, slug, mainImage }) {
   return (
-      <Fade left big>
+
         <article className="mobile-post">
           <Link to={"/post/" + slug.current} key={slug.current}>
           <span className="block h-64 relative rounded shadow leading-snug bg-white border-l-8 border-green-400">
@@ -20,6 +20,5 @@ export default function PostCards({ title, slug, mainImage }) {
           </span>
             </Link>
           </article>
-      </Fade>
   )
 }
