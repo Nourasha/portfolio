@@ -14,7 +14,7 @@ export default function NavBar() {
   }
 
   return (
-    <header className="bg-slate-900 flex-row p-6 h-screen w-auto">
+    <header className="bg-zinc-900 flex-row p-6 h-screen w-auto overflow-hidden">
       <div className="bg-nav container flex justify-between mx-auto mb-6 rounded-full bg-slate-50 h-13 shadow-lg shadow-white">
         <nav ref={hamNav} className="flex items-center">
           <NavLink to="/" exact
