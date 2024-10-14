@@ -40,7 +40,7 @@ export default function Home() {
       {mainPost.map((post) => (
         <div key={post._id} className="container mx-auto md:flex md:justify-between md:items-center">
           <section className="mobile-flex">
-            <span className="text-6xl text-green-300 font-bold cursive mx-6 mb-4">
+            <span className="text-6xl text-white font-bold cursive mx-6 mb-4">
               <Title title={post.title} />
             </span>
             <div className="ml-6 text-white flex">
