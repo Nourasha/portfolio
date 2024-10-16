@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import Title from "../components/Title";
+import HeaderContent from "../components/HeaderContent";
 
 export default function Home() {
   const [mainPost, setMainPost] = useState(null);
@@ -36,14 +37,16 @@ export default function Home() {
   if (!mainPost) return <div>Loading...</div>;
 
   return (
-    <main className="flex bg-zinc-900 justify-between items-center min-h-screen w-auto">
+    <>
+    <HeaderContent />
+    <main className="flex justify-between items-start min-h-screen w-auto">
       {mainPost.map((post) => (
         <div key={post._id} className="container mx-auto md:flex md:justify-between md:items-center">
           <section className="mobile-flex">
-            <span className="text-6xl text-white font-bold cursive mx-6 mb-4">
+            <span className="text-6xl text-black font-bold cursive mx-6 mb-4">
               <Title title={post.title} />
             </span>
-            <div className="ml-6 text-white flex">
+            <div className="ml-6 text-blck flex">
               <BlockText blocks={post.body} />
             </div>
           </section>
@@ -59,5 +62,6 @@ export default function Home() {
         </div>
       ))}
     </main>
+    </>
   );
 }

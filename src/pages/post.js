@@ -26,7 +26,7 @@ export default function Post() {
       .catch(console.error)
     }, []);
     if (postData.length === 0) {
-      return <p className="flex justify-center text-2xl pl-9 pt-9 text-red-600">Nothing Here Yet!</p>
+      return <p className="flex justify-center text-2xl pl-9 pt-9 text-red-600 h-screen">Nothing Here Yet!</p>
     }
 
   return (
