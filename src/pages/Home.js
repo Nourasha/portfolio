@@ -46,19 +46,18 @@ export default function Home() {
               <h1>My Background</h1>
             </span>
       {mainPost.map((post) => (
-        <div key={post._id} className="container mx-auto md:flex md:justify-between md:items-center">
+        <div key={post._id} className="container mx-auto md:flex md:justify-between md:items-center items-start">
           <section className="mobile-flex">
-
-            <div className="ml-6 pt-6 text-blck flex flex-row-reverse justify-start items-start">
-              <div className="prose prose-h1:text-red-600 pt-11 md:pl-3 prose-h3:text-black items-start ">
+            <div className="pt-6 text-blck flex flex-row-reverse md:justify-start items-start">
+              <div className="prose prose-h1:text-red-600 md:pt-11 md:pl-3 prose-h1:text-start prose-p:text-start">
               <BlockText blocks={post.body} className="" />
               </div>
-          <section>
+          <section className="">
             {post.mainImage?.asset && (
               <img
                 src={post.mainImage.asset.url}
                 alt={post.title}
-                className="h-20 w-20"
+                className="md:h-20 md:w-20 h-11 w-11 ml-6"
               />
             )}
           </section>
@@ -67,7 +66,7 @@ export default function Home() {
         </div>
       ))}
     </main>
-    <Project/>
+    {/* <Project/> */}
     </>
   );
 }

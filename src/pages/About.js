@@ -26,7 +26,7 @@ export default function About() {
 
   return (
     <main>
-      <div className="lg:p-10 lg:48 container mx-auto relative">
+      <div className="lg:p-10 lg:48 container mx-auto">
         <section className=" bg-blue-800 rounded-lg shadow-2xl lg:flex md:p-20">
           <img src={urlFor(author.authorImage).url()} className="rounded w-screen h-50 md:w-64 md:h-64 md:mr-8" alt={author.name} />
           <div className="text-lg flex flex-col justify-center">
