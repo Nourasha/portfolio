@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 .cursive {
-  font-family: "Amatic SC", cursive;
-  font-weight: 700;
+  font-family: "Gamja Flower", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .gamja-flower-regular {
   font-family: "Gamja Flower", sans-serif;

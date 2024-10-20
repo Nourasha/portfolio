@@ -4,7 +4,7 @@ import MyImage from '../images/Bilde2.png';
 
 export default function HeaderContent() {
   return (
-    <div className="flex flex-col justify-center md:flex md:flex-row bg-zinc-900 md:items-center md:justify-items-end h-screen overflow-hidden">
+    <div className="text-center h-64 md:flex md:flex-row md:justify-around bg-zinc-900 md:items-center md:justify-items-end md:h-screen overflow-hidden">
     <span className="size text-xl md:text-6xl text-white font-bold gamja-flower-regular mx-5">
       <Title title={"Hello world. I'm Nour"} />
     </span>

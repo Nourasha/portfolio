@@ -75,9 +75,6 @@ export default function NavBar() {
         </button>
         <SosialButtons />
       </div>
-      <div className="container mx-auto flex justify-between items-center h-full">
-        
-      </div>
     </header>
   );
 }

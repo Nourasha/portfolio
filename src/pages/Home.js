@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     let isMounted = true; // Ensure component is still mounted
     sanityClient
-      .fetch(`*[_type == "mainPost"]{
+      .fetch(`*[_type == "mainPost"] | order(_createdAt asc){
         title,
         _id,
         slug,
@@ -46,13 +46,13 @@ export default function Home() {
               <h1>My Background</h1>
             </span>
       {mainPost.map((post) => (
-        <div key={post._id} className="container mx-auto md:flex md:justify-between md:items-center items-start">
+        <div key={post._id} className="mx-auto md:flex md:justify-between md:items-center ">
           <section className="mobile-flex">
-            <div className="pt-6 text-blck flex flex-row-reverse md:justify-start items-start">
+            <div className="md:pt-6 md:text-blck md:flex md:flex-row-reverse md:justify-start md:items-start flex flex-col">
               <div className="prose prose-h1:text-red-600 md:pt-11 md:pl-3 prose-h1:text-start prose-p:text-start">
               <BlockText blocks={post.body} className="" />
               </div>
-          <section className="">
+          <section className="invisible md:visible">
             {post.mainImage?.asset && (
               <img
                 src={post.mainImage.asset.url}
