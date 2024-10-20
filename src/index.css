@@ -6,6 +6,12 @@
   font-family: "Amatic SC", cursive;
   font-weight: 700;
 }
+.delius-regular {
+  font-family: "Delius", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 
 .prose img {
   margin-left: auto;
@@ -21,10 +27,7 @@
   margin: 0px;
   padding: 0px;
 }
-header {
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b8e1fc+0,a9d2f3+10,90bae4+25,90bcea+37,90bff0+50,a2daf5+83,bdf3fd+100 */
 
-}
 header .nav-btn {
   padding: 5px;
   cursor: pointer;
@@ -34,6 +37,7 @@ header .nav-btn {
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+  color: white;
 }
 
 @media only screen and (max-width: 767px){
