@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
     <HeaderContent />
-    <main className="flex flex-col justify-between items-start h-auto w-auto">
+    <main className="flex flex-col justify-between md:items-start items-center h-auto w-auto">
     <span className="md:text-6xl text-black font-bold cursive mx-6 mb-4">
               <h1>My Background</h1>
             </span>
