@@ -41,12 +41,12 @@ export default function Home() {
   return (
     <>
     <HeaderContent />
-    <main className="flex flex-col justify-between md:items-start items-center h-auto w-auto">
+    <main className="flex flex-col justify-between md:items-start md:flex-wrap md:content-start items-center h-auto w-auto">
     <span className="md:text-6xl text-black font-bold cursive mx-6 mb-4">
               <h1>My Background</h1>
             </span>
       {mainPost.map((post) => (
-        <div key={post._id} className="mx-auto md:flex md:justify-between md:items-center ">
+        <div key={post._id} className="mx-auto ">
           <section className="mobile-flex">
             <div className="md:pt-6 md:text-blck md:flex md:flex-row-reverse md:justify-start md:items-start flex flex-col">
               <div className="prose prose-h1:text-red-600 md:pt-11 md:pl-3 prose-h1:text-start prose-p:text-start">
