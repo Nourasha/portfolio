@@ -8,7 +8,7 @@ export default function HeaderContent() {
     <span className="size text-xl md:text-6xl text-white font-bold gamja-flower-regular mx-5">
       <Title title={"Hello world. I'm Nour"} />
     </span>
-    <img src={MyImage} alt="Nour's picture" className="invisible md:visible md:header-img md:rounded-sm object-cover" />
+    {/* <img src={MyImage} alt="Nour's picture" className="invisible md:visible md:header-img md:rounded-sm object-cover" /> */}
     </div>
   )
   }
