@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import Title from "./Title";
-import MyImage from '../images/Bilde2.png';
+import MyImage from '../images/bilde3.png';
 
 export default function HeaderContent() {
   return (
@@ -9,6 +9,7 @@ export default function HeaderContent() {
       <Title title={"Hello world. I'm Nour"} />
     </span>
     {/* <img src={MyImage} alt="Nour's picture" className="invisible md:visible md:header-img md:rounded-sm object-cover" /> */}
+    <img src={MyImage} alt="Nour's picture" className="invisible md:visible md:header-img md:rounded-sm object-cover" />
     </div>
   )
   }
