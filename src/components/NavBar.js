@@ -26,8 +26,8 @@ export default function NavBar() {
             exact
             className={({ isActive }) =>
               isActive
-                ? "no-underline inflex-flex items-center py-6 px-3 mx-4 text-green-500 hover:text-green-900 font-bold cursive tracking-widest"
-                : "no-underline inflex-flex items-center py-6 px-3 mx-4 text-red-400 hover:text-green-800 font-bold cursive tracking-widest"
+                ? "no-underline inflex-flex items-center py-6 px-3 mx-4 text-green-500 hover:text-green-900 font-bold anton tracking-widest"
+                : "no-underline inflex-flex items-center py-6 px-3 mx-4 text-red-400 hover:text-green-900 font-bold anton tracking-widest"
             }
             onClick={closeNavBar} // Close menu on link click
           >
@@ -38,7 +38,7 @@ export default function NavBar() {
             className={({ isActive }) =>
               isActive
                 ? "no-underline inline-flex items-center py-3 px-3 rounded text-green-500 font-bold hover:text-green-900"
-                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-800"
+                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-900"
             }
             onClick={closeNavBar} // Close menu on link click
           >
@@ -49,7 +49,7 @@ export default function NavBar() {
             className={({ isActive }) =>
               isActive
                 ? "no-underline inline-flex items-center py-3 px-3 rounded text-green-500 font-bold hover:text-green-900"
-                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-800"
+                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-900"
             }
             onClick={closeNavBar} // Close menu on link click
           >
@@ -60,7 +60,7 @@ export default function NavBar() {
             className={({ isActive }) =>
               isActive
                 ? "no-underline inline-flex items-center py-3 px-3 rounded text-green-500 font-bold hover:text-green-900"
-                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-800"
+                : "no-underline inline-flex items-center py-3 px-3 rounded text-red-400 font-bold hover:text-green-900"
             }
             onClick={closeNavBar} // Close menu on link click
           >
