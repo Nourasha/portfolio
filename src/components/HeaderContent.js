@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import Title from "./Title";
-import MyImage from '../images/bilde3.png';
+import MyImage from '../images/nourspic3.jpg';
 
 export default function HeaderContent() {
   return (
