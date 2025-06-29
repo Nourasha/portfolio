@@ -36,6 +36,10 @@ export default {
       name: 'link',
       type: 'url',
     },
+     {
+      name: 'github-link',
+      type: 'url',
+    },
     {
       name: 'tags',
       type: 'array',
