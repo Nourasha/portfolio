@@ -36,8 +36,8 @@ export default {
       name: 'link',
       type: 'url',
     },
-     {
-      name: 'github-link',
+    {
+      name: 'githublink',
       type: 'url',
     },
     {
