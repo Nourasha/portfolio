@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
-import Title from "../components/Title";
 import HeaderContent from "../components/HeaderContent";
-import Image from "../images/arrow.png"
-import Project from "./Project";
+
 
 export default function Home() {
   const [mainPost, setMainPost] = useState(null);
+  const mountedRef = useRef(true)
 
   useEffect(() => {
-    let isMounted = true; // Ensure component is still mounted
+    mountedRef.current = true
     sanityClient
       .fetch(`*[_type == "mainPost"] | order(_createdAt asc){
         title,
@@ -25,14 +24,18 @@ export default function Home() {
         body,
       }`)
       .then((data) => {
-        if (isMounted) {
+        if (mountedRef.current) {
           setMainPost(data); // Update state only if mounted
         }
       })
-      .catch(console.error);
+      .catch(error => {
+        if(mountedRef.current) {
+          console.error(error)
+        }
+      });
 
     return () => {
-      isMounted = false; // Cleanup on unmount
+      mountedRef.current = false; // Cleanup on unmount
     };
   }, []);
 
@@ -66,7 +69,6 @@ export default function Home() {
         </div>
       ))}
     </main>
-    {/* <Project/> */}
     </>
   );
 }
