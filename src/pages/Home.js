@@ -91,15 +91,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SKILLS STRIP ── */}
-      <div className="bg-gray-900 py-4 overflow-x-auto">
-        <div className="flex gap-8 px-8 items-center min-w-max">
-          <span className="text-xs font-semibold text-white uppercase tracking-widest">Tech stack</span>
-          {["React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"].map((s) => (
-            <span key={s} className="text-xs font-medium text-gray-500 uppercase tracking-wider">{s}</span>
-          ))}
+ {/* ── SKILLS GRID ── */}
+<section className="max-w-5xl mx-auto px-4 md:px-8 py-16 border-t border-gray-100">
+  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Skills</p>
+  <h2 className="font-serif text-3xl text-gray-900 tracking-tight mb-10">Tech stack</h2>
+
+  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
+    {[
+      { name: "React",        level: "Frontend",        bg: "bg-blue-50",   icon: "⚛️" },
+      { name: "JavaScript",   level: "Language",        bg: "bg-yellow-50", icon: "🟨" },
+      { name: "Next.js",      level: "Frontend",        bg: "bg-gray-100",  icon: "▲"  },
+      { name: "TypeScript",   level: "Language",        bg: "bg-blue-50",   icon: "🔷" },
+      { name: "Prisma",       level: "ORM",             bg: "bg-teal-50",   icon: "◆"  },
+      { name: "SQL",          level: "Database",        bg: "bg-orange-50", icon: "🗄️" },
+      { name: "Tailwind CSS", level: "Styling",         bg: "bg-teal-50",   icon: "🎨" },
+      { name: "Sanity CMS",   level: "CMS",             bg: "bg-orange-50", icon: "📝" },
+      { name: "Node.js",      level: "Backend",         bg: "bg-green-50",  icon: "🟢" },
+      { name: "Git",          level: "Version control", bg: "bg-gray-100",  icon: "🔀" },
+      { name: "REST APIs",    level: "Backend",         bg: "bg-purple-50", icon: "🔌" },
+      { name: "Netlify",      level: "Deployment",      bg: "bg-teal-50",   icon: "🚀" },
+    ].map((skill) => (
+      <div
+        key={skill.name}
+        className="bg-white border border-gray-200 rounded-xl p-3 flex flex-col items-center gap-1.5 hover:border-gray-400 hover:-translate-y-0.5 transition-all duration-150"
+      >
+        <div className={`w-9 h-9 ${skill.bg} rounded-lg flex items-center justify-center text-base`}>
+          {skill.icon}
         </div>
+        <span className="text-xs font-medium text-gray-800 text-center leading-tight">{skill.name}</span>
+        <span className="text-xs text-gray-400 text-center leading-tight hidden sm:block">{skill.level}</span>
       </div>
+    ))}
+  </div>
+</section>
 
       <div className="border-t border-gray-100" />
 
