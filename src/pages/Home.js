@@ -95,7 +95,7 @@ export default function Home() {
       <div className="bg-gray-900 py-4 overflow-x-auto">
         <div className="flex gap-8 px-8 items-center min-w-max">
           <span className="text-xs font-semibold text-white uppercase tracking-widest">Tech stack</span>
-          {["React", "JavaScript", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"].map((s) => (
+          {["React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"].map((s) => (
             <span key={s} className="text-xs font-medium text-gray-500 uppercase tracking-wider">{s}</span>
           ))}
         </div>
