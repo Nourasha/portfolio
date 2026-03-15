@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
-import profilePhoto from "../image/bilde3.png"; // legg bildet ditt her
+import profilePhoto from "../image/nour-photo.jpg"; // legg bildet ditt her
 
 export default function Home() {
   const [mainPost, setMainPost] = useState(null);

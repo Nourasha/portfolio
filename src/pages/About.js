@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import sanityClient from "../lib/client";
 import ImageUrlBuilder from "@sanity/image-url";
 import BlockContent from "@sanity/block-content-to-react";
-import profilePhoto from "../image/bilde3.png";
+import profilePhoto from "../image/nour-photo.jpg";
 
 const builder = ImageUrlBuilder(sanityClient);
 function urlFor(source) {
