@@ -10,9 +10,7 @@ function urlFor(source) {
 }
 
 const SKILLS = [
-  "React", "JavaScript", "Tailwind CSS",
-  "Sanity CMS", "Node.js", "Git & GitHub",
-  "REST APIs", "Netlify",
+"React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"
 ];
 
 export default function About() {
