@@ -1,7 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── Base ── */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Typografi (beholdt fra gammel kode) ── */
 .cursive {
   font-family: "Gamja Flower", sans-serif;
   font-weight: 400;
@@ -12,31 +27,23 @@
   font-weight: 400;
   font-style: normal;
 }
-
 .anton {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
+.font-serif {
+  font-family: 'DM Serif Display', Georgia, serif;
+}
 
-
-
-
+/* ── Prose bilder ── */
 .prose img {
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
-.home-name {
-  font-size: 150px;
-}
-
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
+/* ── Hamburger-meny (beholdt og forbedret) ── */
 header .nav-btn {
   padding: 5px;
   cursor: pointer;
@@ -46,33 +53,17 @@ header .nav-btn {
   visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
-  color: white;
+  color: #1a1a1a;
 }
 
-@media only screen and (max-width: 767px){
-
+@media only screen and (max-width: 767px) {
   header .nav-btn {
     visibility: visible;
     opacity: 1;
+  }
 
-  }
-  header .bg-nav {
-    background: transparent;
-    box-shadow: 0 0 0 0;
-  }
-  /* header .sosial {
-    visibility: hidden;
-    opacity: 0;
-  } */
-  header .header-img {
-    width: 128px; 
-    height: 128px;
-  }
-  header .size {
-    font-size: 24px;
-  }
   header nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -81,44 +72,30 @@ header .nav-btn {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    background-color: #0f172a;
-    transform: translatey(-100vh);
-    transition: 1s;
-
+    gap: 2rem;
+    background-color: #ffffff;
+    transform: translateY(-100vh);
+    transition: transform 0.4s ease;
+    z-index: 50;
   }
+
   header .responsive_nav {
     transform: none;
   }
+
   nav .nav-close-btn {
     position: absolute;
-    color: white;
+    color: #1a1a1a;
     top: 2rem;
-    left: 2rem;
+    right: 2rem;
   }
-  main div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  main div section h1{
-    text-align: center;
-  }
-  main .img-mobile {
-    width: 100%;
-    height: 100%;
-    margin: 2rem 0;
-    border-radius: 0%;
 
-  }
   .mobile-post {
     width: 100vw;
   }
 }
 
+/* ── Main bakgrunn (oppdatert til hvit/clean) ── */
 main {
-  /* background-image: url(./images/whitebg.jpg); */
-  background-color: #e0e1dd;
-  background-size: cover;
+  background-color: #ffffff;
 }

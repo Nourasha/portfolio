@@ -1,6 +1,5 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import sanityClient from "../lib/client";
-
 
 export default function Project() {
   const [projectData, setProject] = useState(null);
@@ -8,62 +7,119 @@ export default function Project() {
   useEffect(() => {
     sanityClient
       .fetch(`*[_type == "project"]{
-        title,
-        date,
-        place,
-        description,
-        projectType,
-        githublink,
-        link,
-        tags
+        title, date, place, description,
+        projectType, githublink, link, tags
       }`)
       .then((data) => setProject(data))
       .catch(console.error);
   }, []);
 
-  return (
-    <main className="min-h-screen p-12">
-      <section className="container mx-auto">
-        <h1 className="text-5xl flex justify-center cursive">My Projects</h1>
-        <h2 className="text-lg text-gray-600 flex justify-center mb-12 mt-6">Welcome to my projects page!</h2>
-        <section className="grid md:grid-cols-2 gap-8">
-          {projectData && projectData.map((project) => (
+  if (!projectData)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-400 text-sm">Loading...</p>
+      </div>
+    );
 
-          <article className="rounded-lg shadow-xl bg-white p-16">
-            <h3 className="text-gray-800 text-3xl font-bold mb-2 hover:text-red-700">
-              <a
-                href={project.link}
-                alt={project.title}
-                target="_blank"
-                rel="noopener noreferrer"
-              >{project.title}</a>
-            </h3>
-            <div className="text-gray-500 text-xs items-start md:space-x-4">
-              <span>
-                <strong className="font-bold">Finished on</strong>:{" "}
-                {new Date(project.date).toLocaleDateString()}
+  return (
+    <main className="max-w-5xl mx-auto px-8 py-20">
+
+      {/* Header */}
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Work</p>
+      <h1 className="font-serif text-4xl text-gray-900 tracking-tight mb-4">
+        Selected projects
+      </h1>
+      <p className="text-gray-500 text-base font-light mb-16 max-w-lg">
+        A collection of things I've built — from personal tools to full web applications.
+      </p>
+
+      {/* Cards */}
+      <div className="grid md:grid-cols-2 gap-5">
+        {projectData.map((project, index) => (
+          <article
+            key={project.title + index}
+            className={`border rounded-2xl p-8 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-sm
+              ${index === 0
+                ? "md:col-span-2 bg-gray-900 border-gray-800"
+                : "bg-white border-gray-200 hover:border-gray-400"
+              }`}
+          >
+            {/* Top meta */}
+            <div className="flex items-center justify-between mb-4">
+              <span className={`text-xs font-medium uppercase tracking-widest
+                ${index === 0 ? "text-gray-500" : "text-gray-400"}`}>
+                {project.projectType === "personal" ? "Personal"
+                  : project.projectType === "client" ? "Client"
+                  : project.projectType === "school" ? "School"
+                  : "Project"}
               </span>
-              <span>
-              <strong className="font-bold">Company</strong>:{" "}
-              {project.place}
-              </span>
-              <span>
-              <strong className="font-bold">Type</strong>:{" "}
-              {project.projectType}
-              </span>
-              <p className="my-6 text-lg text-gray-700 leading-relaxed">
-                {project.description}
+              {project.date && (
+                <span className={`text-xs ${index === 0 ? "text-gray-600" : "text-gray-400"}`}>
+                  {new Date(project.date).getFullYear() || ""}
+                </span>
+              )}
+            </div>
+
+            {/* Title */}
+            <h2 className={`font-serif text-2xl tracking-tight mb-2
+              ${index === 0 ? "text-white" : "text-gray-900"}`}>
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer"
+                  className={`no-underline hover:opacity-70 transition-opacity
+                    ${index === 0 ? "text-white" : "text-gray-900"}`}>
+                  {project.title}
+                </a>
+              ) : project.title}
+            </h2>
+
+            {/* Company */}
+            {project.place && (
+              <p className={`text-xs font-medium mb-4 ${index === 0 ? "text-gray-500" : "text-gray-400"}`}>
+                {project.place}
               </p>
-              <a href={project.githublink} rel="noopener noreferrer" target="_blank" className="text-red-500 font-bold hover:underline hover:text-red-400 text-xl"
-              >
-                View The Projects code on GitHub{" "}
-                <span role="img" aria-label="right pointer">👉</span>
-              </a>
+            )}
+
+            {/* Description */}
+            <p className={`text-sm leading-relaxed mb-6 font-light
+              ${index === 0 ? "text-gray-400" : "text-gray-500"}`}>
+              {project.description}
+            </p>
+
+            {/* Footer */}
+            <div className={`flex items-center justify-between pt-4 border-t
+              ${index === 0 ? "border-gray-800" : "border-gray-100"}`}>
+
+              {/* Tags */}
+              <div className="flex gap-2 flex-wrap">
+                {project.tags?.map((tag) => (
+                  <span key={tag}
+                    className={`text-xs font-medium px-2.5 py-1 rounded-md
+                      ${index === 0
+                        ? "bg-gray-800 text-gray-400"
+                        : "bg-gray-100 text-gray-500"}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* GitHub link */}
+              {project.githublink && (
+                <a
+                  href={project.githublink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`no-underline text-xs font-medium transition-colors whitespace-nowrap ml-4
+                    ${index === 0
+                      ? "text-gray-500 hover:text-white"
+                      : "text-gray-400 hover:text-gray-900"}`}
+                >
+                  View code →
+                </a>
+              )}
             </div>
           </article>
-          ))}
-        </section>
-      </section>
+        ))}
+      </div>
     </main>
-  )
+  );
 }
