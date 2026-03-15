@@ -121,7 +121,7 @@ export default function About() {
           I'm open to freelance projects and full-time positions. Let's build something great.
         </p>
         <a
-          href="mailto:din@epost.no"
+          href="mailto:nour.abshawish@outlook.com"
           className="no-underline inline-block bg-gray-900 text-white text-sm font-medium px-8 py-3 rounded-full hover:bg-gray-700 transition-colors"
         >
           Send me an email
