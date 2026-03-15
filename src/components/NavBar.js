@@ -19,7 +19,7 @@ export default function NavBar() {
 
         {/* Logo */}
         <NavLink to="/" className="font-serif text-xl text-gray-900 tracking-tight no-underline">
-          nourdev.io
+          Nour.dev
         </NavLink>
 
         {/* Desktop nav — kun synlig på md+ */}
