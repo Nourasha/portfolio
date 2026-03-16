@@ -168,7 +168,7 @@ export default function Home() {
         {mainPost.map((post) => (
           <div
             key={post._id}
-            className="grid grid-cols-[56px_1fr] gap-8 items-start mb-14"
+            className="grid md:grid-cols-[56px_1fr] gap-8 items-start mb-14"
           >
             {/* Diskret ikon */}
             <div className="hidden md:flex w-14 h-14 rounded-2xl bg-gray-50 border border-gray-200 items-center justify-center flex-shrink-0">
