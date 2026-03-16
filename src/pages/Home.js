@@ -134,16 +134,35 @@ export default function Home() {
 
         {mainPost.map((post) => (
           <div key={post._id} className="grid md:grid-cols-3 gap-12 items-start mb-16">
-            {/* Image */}
-            {post.mainImage?.asset && (
-              <div className="hidden md:block">
-                <img
-                  src={post.mainImage.asset.url}
-                  alt={post.title}
-                  className="w-full aspect-square object-cover rounded-2xl border border-gray-100"
-                />
-              </div>
-            )}
+            {/* Diskret ikon basert på tittel */}
+<div className="hidden md:block">
+  <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-center">
+    {post.title?.toLowerCase().includes("education") ? (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 3L2 8l10 5 10-5-10-5z" stroke="#9ca3af" strokeWidth="1.5" strokeLinejoin="round"/>
+        <path d="M6 10.5v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
+        <line x1="22" y1="8" x2="22" y2="13" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ) : post.title?.toLowerCase().includes("skill") ? (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="#9ca3af" strokeWidth="1.5" strokeLinejoin="round"/>
+      </svg>
+    ) : post.title?.toLowerCase().includes("experience") || post.title?.toLowerCase().includes("work") ? (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="7" width="20" height="14" rx="2" stroke="#9ca3af" strokeWidth="1.5"/>
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#9ca3af" strokeWidth="1.5"/>
+        <line x1="12" y1="12" x2="12" y2="16" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
+        <line x1="10" y1="14" x2="14" y2="14" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ) : (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="#9ca3af" strokeWidth="1.5"/>
+        <line x1="12" y1="8" x2="12" y2="12" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
+        <circle cx="12" cy="15.5" r="0.75" fill="#9ca3af"/>
+      </svg>
+    )}
+  </div>
+</div>
             {/* Text */}
             <div className={post.mainImage?.asset ? "md:col-span-2" : "md:col-span-3"}>
               <div className="prose prose-sm prose-gray max-w-none
