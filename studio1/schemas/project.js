@@ -9,6 +9,13 @@ export default {
 
     },
     {
+      name: 'featured',
+      title: 'Featured project',
+      type: 'boolean',
+      description: 'Vis dette prosjektet øverst og større enn de andre',
+      initialValue: false,
+    },
+    {
       name: 'date',
       type: 'datetime',
     },
