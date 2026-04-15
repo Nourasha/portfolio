@@ -11,7 +11,10 @@ export default function Project() {
         projectType, githublink, link, tags,
         featured
       }`)
-      .then((data) => setProject(data))
+      .then((data) => {
+        const sorted = [...data].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+        setProject(sorted);
+      })
       .catch(console.error);
   }, []);
 
