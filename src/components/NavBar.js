@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import SosialButtons from "./SosialButtons";
+import SocialButtons from "./SocialButtons";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +38,7 @@ export default function NavBar() {
         {/* Høyre side */}
         <div className="flex items-center gap-3">
           <div className="hidden md:flex">
-            <SosialButtons />
+            <SocialButtons />
           </div>
           <NavLink
             to="/about"
@@ -71,7 +71,7 @@ export default function NavBar() {
             About me
           </NavLink>
           <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
-            <SosialButtons />
+            <SocialButtons />
             <NavLink
               to="/about"
               className="no-underline bg-gray-900 text-white text-sm font-medium px-5 py-2 rounded-full"

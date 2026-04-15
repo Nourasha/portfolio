@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import sanityClient from "../lib/client";
-import ImageUrlBuilder from "@sanity/image-url";
-import BlockContent from "@sanity/block-content-to-react";
-import profilePhoto from "../image/nour-photo.jpg";
-
-const builder = ImageUrlBuilder(sanityClient);
-function urlFor(source) {
-  return builder.image(source);
-}
+import BlockText from "../components/BlockContent";
+import profilePhoto from "../assets/images/nour-photo.jpg";
 
 const SKILLS = [
 "React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"
@@ -92,7 +86,7 @@ export default function About() {
             prose-p:text-gray-500 prose-p:leading-relaxed prose-p:font-light
             prose-h3:font-serif prose-h3:font-normal prose-h3:text-gray-900
             prose-strong:text-gray-700 prose-strong:font-medium mb-10">
-            <BlockContent blocks={author.bio} />
+            <BlockText blocks={author.bio} />
           </div>
 
           {/* Skills */}

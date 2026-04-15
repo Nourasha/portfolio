@@ -2,10 +2,10 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from '../pages/Home';
 import About from '../pages/About';
-import Post from '../pages/post';
 import Project from '../pages/Project';
 import NavBar from "../components/NavBar";
 import NotFound from "../pages/NotFound";
+
 
 
 

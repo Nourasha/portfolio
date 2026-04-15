@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
-import profilePhoto from "../image/nour-photo.jpg";
+import profilePhoto from "../assets/images/nour-photo.jpg";
 
 function SectionIcon({ title }) {
   const t = title?.toLowerCase() || "";
