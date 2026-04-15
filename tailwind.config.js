@@ -1,8 +1,15 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+      },
+    },
   },
-  corePlugins: {preflight:false,},
-  plugins: [require('@tailwindcss/typography'),],
-}
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+};

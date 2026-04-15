@@ -1,17 +1,36 @@
-import PostCards from "../components/PostCards"
+import PostCards from "../components/PostCards";
 
 export default function FilterSearch({ event, search }) {
   const inputData = event?.filter((post) =>
-  post.title.toLowerCase().includes(search.toLowerCase()))
-  
+    post.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  if (!inputData?.length) {
+    return (
+      <p className="text-sm text-gray-400 py-4">
+        No posts match "{search}"
+      </p>
+    );
+  }
+
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {inputData?.length > 0 ? inputData
-      .sort((a,b) => a.publishedAt < b.publishedAt ? 1 : -1)
-      .map((element) => {
-        const { title, slug, publishedAt, mainImage, _id, id } = element
-        return <PostCards key={!id?_id : id} title={title} slug={slug} publishedAt={publishedAt} mainImage={mainImage} />
-      }) : <p className="text-lg ml-9">No Match</p>}
+      {inputData
+        .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
+        .map((post) => {
+          const { title, slug, publishedAt, mainImage, _id, authorName, categories } = post;
+          return (
+            <PostCards
+              key={_id}
+              title={title}
+              slug={slug}
+              publishedAt={publishedAt}
+              mainImage={mainImage}
+              authorName={authorName}
+              categories={categories}
+            />
+          );
+        })}
     </div>
-  )
+  );
 }
