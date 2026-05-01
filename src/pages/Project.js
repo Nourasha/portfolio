@@ -12,8 +12,7 @@ export default function Project() {
         featured
       }`)
       .then((data) => {
-        const sorted = [...data].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
-        setProject(sorted);
+        setProject(data);
       })
       .catch(console.error);
   }, []);
