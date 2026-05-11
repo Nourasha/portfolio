@@ -14,7 +14,7 @@ export default function RoutePage () {
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route element={<Home/>} path='/' exact />
+        <Route element={<Home/>} path='/' />
         <Route element={<About/>} path='/about' />
         <Route element={<Project/>} path='/project' />
         <Route element={<NotFound/>} path='*' />

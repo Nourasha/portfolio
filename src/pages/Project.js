@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import sanityClient from "../lib/client";
 
 export default function Project() {
   const [projectData, setProject] = useState(null);
+  const [error, setError] = useState(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
+    mountedRef.current = true;
     sanityClient
       .fetch(`*[_type == "project"] | order(featured desc, date desc) {
         title, date, place, description,
@@ -12,10 +15,23 @@ export default function Project() {
         featured
       }`)
       .then((data) => {
-        setProject(data);
+        if (mountedRef.current) setProject(data);
       })
-      .catch(console.error);
+      .catch(() => {
+        if (mountedRef.current) setError(true);
+      });
+
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
+
+  if (error)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+      </div>
+    );
 
   if (!projectData)
     return (

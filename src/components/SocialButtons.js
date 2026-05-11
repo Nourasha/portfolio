@@ -1,6 +1,6 @@
 import { SocialIcon } from "react-social-icons";
 
-export default function SosialButtons() {
+export default function SocialButtons() {
   return (
     <div className="flex items-center gap-2">
       <SocialIcon

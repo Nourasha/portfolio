@@ -22,7 +22,7 @@ export default function NavBar() {
           Nour.dev
         </NavLink>
 
-        {/* Desktop nav — kun synlig på md+ */}
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           <NavLink to="/" end className={({ isActive }) => isActive ? activeClass : inactiveClass}>
             Biography
@@ -47,7 +47,7 @@ export default function NavBar() {
             Hire me
           </NavLink>
 
-          {/* Hamburger — kun synlig på mobil */}
+          {/* Mobile hamburger */}
           <button
             className="md:hidden text-gray-700 p-1"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -58,7 +58,7 @@ export default function NavBar() {
         </div>
       </div>
 
-      {/* Mobil-meny — rendres kun når åpen */}
+      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-5 px-6 py-6 bg-white border-t border-gray-100">
           <NavLink to="/" end className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>

@@ -1,25 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
 
-const SKILLS = [
+const skills = [
 "React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"
 ];
 
 export default function About() {
   const [author, setAuthor] = useState(null);
+  const [error, setError] = useState(false);
+  const mountedRef = useRef(true);
 
   useEffect(() => {
+    mountedRef.current = true;
     sanityClient
       .fetch(`*[_type == "author"]{
         name,
         bio,
         "authorImage": image.asset->url
       }`)
-      .then((data) => setAuthor(data[0]))
-      .catch(console.error);
+      .then((data) => {
+        if (mountedRef.current) setAuthor(data[0]);
+      })
+      .catch(() => {
+        if (mountedRef.current) setError(true);
+      });
+
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
+
+  if (error)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+      </div>
+    );
 
   if (!author)
     return (
@@ -93,7 +111,7 @@ export default function About() {
           <div className="border-t border-gray-100 pt-8">
             <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Skills & tools</p>
             <div className="flex flex-wrap gap-2">
-              {SKILLS.map((skill) => (
+              {skills.map((skill) => (
                 <span
                   key={skill}
                   className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-600"

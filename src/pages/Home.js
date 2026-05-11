@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
@@ -43,6 +44,7 @@ function SectionIcon({ title }) {
 
 export default function Home() {
   const [mainPost, setMainPost] = useState(null);
+  const [error, setError] = useState(false);
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -56,14 +58,21 @@ export default function Home() {
       .then((data) => {
         if (mountedRef.current) setMainPost(data);
       })
-      .catch((error) => {
-        if (mountedRef.current) console.error(error);
+      .catch(() => {
+        if (mountedRef.current) setError(true);
       });
 
     return () => {
       mountedRef.current = false;
     };
   }, []);
+
+  if (error)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+      </div>
+    );
 
   if (!mainPost)
     return (
@@ -96,18 +105,18 @@ export default function Home() {
           </p>
 
           <div className="flex gap-3 flex-wrap">
-            <a
-              href="/project"
+            <Link
+              to="/project"
               className="no-underline bg-gray-900 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-700 transition-colors duration-150"
             >
               See my projects
-            </a>
-            <a
-              href="/about"
+            </Link>
+            <Link
+              to="/about"
               className="no-underline border border-gray-300 text-gray-700 text-sm font-normal px-6 py-3 rounded-full hover:border-gray-500 hover:text-gray-900 transition-colors duration-150"
             >
               About me
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -170,12 +179,10 @@ export default function Home() {
             key={post._id}
             className="grid md:grid-cols-[56px_1fr] gap-8 items-start mb-14"
           >
-            {/* Diskret ikon */}
             <div className="hidden md:flex w-14 h-14 rounded-2xl bg-gray-50 border border-gray-200 items-center justify-center flex-shrink-0">
               <SectionIcon title={post.title} />
             </div>
 
-            {/* Tekst */}
             <div className="prose prose-sm prose-gray max-w-none
               prose-headings:font-serif prose-headings:font-normal prose-headings:tracking-tight
               prose-h1:text-2xl prose-h1:text-gray-900
