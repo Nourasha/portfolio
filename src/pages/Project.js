@@ -46,7 +46,7 @@ export default function Project() {
       {/* Header */}
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Work</p>
       <h1 className="font-serif text-4xl text-gray-900 tracking-tight mb-4">
-        Selected projects
+        Selected Projects
       </h1>
       <p className="text-gray-500 text-base font-light mb-16 max-w-lg">
         A collection of things I've built — from personal tools to full web applications.
