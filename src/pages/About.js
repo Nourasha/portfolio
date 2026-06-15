@@ -2,10 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
-
-const skills = [
-"React", "JavaScript","NextJS","TypeScript", "Prisma", "SQL", "Database", "Tailwind CSS", "Sanity CMS", "Node.js", "Git", "REST APIs", "Netlify"
-];
+import skills from "../data/skills";
 
 export default function About() {
   const [author, setAuthor] = useState(null);
@@ -113,10 +110,10 @@ export default function About() {
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span
-                  key={skill}
+                  key={skill.name}
                   className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-600"
                 >
-                  {skill}
+                  {skill.name}
                 </span>
               ))}
             </div>
