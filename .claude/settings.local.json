@@ -1,7 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(npm view *)",
+      "Bash(npm run *)",
+      "Bash(grep -rn \"no matching \\\\`@tailwind\" node_modules/)",
+      "Bash(npm test *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(npx --yes playwright --version)",
+      "Read(//root/.cache/**)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(npx playwright *)",
+      "Bash(node /tmp/claude-1000/-home-nourash-Privat-portofolio/f266b382-bf41-4ee7-a24c-f03c65a99657/scratchpad/verify-router.js)",
+      "Bash(NODE_PATH=/home/nourash/Privat/portofolio/node_modules node /tmp/claude-1000/-home-nourash-Privat-portofolio/f266b382-bf41-4ee7-a24c-f03c65a99657/scratchpad/verify-router.js)",
+      "Bash(kill -9 18244)",
+      "Bash(kill -9 18602)",
+      "Bash(pkill -9 -f \"react-scripts start\")",
+      "Bash(pkill -9 -f \"node.*start.js\")",
+      "Bash(npm uninstall *)"
     ]
   }
 }

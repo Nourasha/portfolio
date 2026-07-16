@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
