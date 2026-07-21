@@ -94,7 +94,7 @@ export default function About() {
             <span className="italic text-gray-500">{author.name}</span>
           </h2>
           <p className="text-xs text-gray-400 uppercase tracking-widest font-medium mb-8">
-            Full-stack Developer
+            FULL-STACK DEVELOPER · CYBERSECURITY MASTER'S STUDENT
           </p>
 
           <div className="prose prose-sm prose-gray max-w-none

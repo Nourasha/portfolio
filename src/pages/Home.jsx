@@ -65,9 +65,7 @@ export default function Home() {
           </h1>
 
           <p className="text-gray-500 text-lg leading-relaxed mb-10 font-light">
-            Full-stack developer based in Norway. I create clean, fast, and
-            accessible digital experiences — from pixel-perfect interfaces
-            to well-structured backends.
+            Full-stack developer and cybersecurity master's student based in Norway. I build clean, fast, and accessible web applications — and I care just as much about how they're governed and secured as how they look.
           </p>
 
           <div className="flex gap-3 flex-wrap">
