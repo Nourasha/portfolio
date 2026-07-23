@@ -17,8 +17,8 @@ export default function PostCards({ title, slug, publishedAt, mainImage, authorN
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
-            <div className="w-full h-full bg-gray-100 flex items-center justify-center">
-              <span className="text-gray-300 text-sm">No image</span>
+            <div role="img" aria-label="No image available" className="w-full h-full bg-gray-100 flex items-center justify-center">
+              <span className="text-gray-500 text-sm">No image</span>
             </div>
           )}
         </div>
@@ -26,15 +26,15 @@ export default function PostCards({ title, slug, publishedAt, mainImage, authorN
         {/* Meta */}
         <div className="flex items-center gap-3 mb-2">
           {categories?.length > 0 && (
-            <span className="text-xs font-medium uppercase tracking-widest text-gray-400">
+            <span className="text-xs font-medium uppercase tracking-widest text-gray-500">
               {categories[0].title}
             </span>
           )}
           {publishedAt && (
-            <span className="text-xs text-gray-300">·</span>
+            <span className="text-xs text-gray-400">·</span>
           )}
           {publishedAt && (
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-gray-500">
               {new Date(publishedAt).toLocaleDateString("no-NO", {
                 year: "numeric",
                 month: "short",
@@ -52,7 +52,7 @@ export default function PostCards({ title, slug, publishedAt, mainImage, authorN
 
         {/* Author */}
         {authorName && (
-          <p className="text-xs text-gray-400 font-light">{authorName}</p>
+          <p className="text-xs text-gray-500 font-light">{authorName}</p>
         )}
       </Link>
     </article>

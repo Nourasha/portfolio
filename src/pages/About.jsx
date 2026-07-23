@@ -3,6 +3,8 @@ import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
 import skills from "../data/skills";
+import Button from "../components/Button";
+import PageHeader from "../components/PageHeader";
 
 export default function About() {
   const [author, setAuthor] = useState(null);
@@ -32,25 +34,21 @@ export default function About() {
   if (error)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+        <p className="text-gray-500 text-sm">Failed to load content. Please try again later.</p>
       </div>
     );
 
   if (!author)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Loading...</p>
+        <p className="text-gray-500 text-sm">Loading...</p>
       </div>
     );
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
 
-      {/* Eyebrow */}
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">About me</p>
-      <h1 className="font-serif text-4xl text-gray-900 tracking-tight mb-16">
-        The person behind the code
-      </h1>
+      <PageHeader eyebrow="About me" title="The person behind the code" />
 
       {/* Main grid: photo left, text right */}
       <div className="grid md:grid-cols-5 gap-16 items-start mb-20">
@@ -61,29 +59,19 @@ export default function About() {
             <img
               src={profilePhoto}
               alt={author.name}
-              className="w-full aspect-[3/4] object-cover object-top rounded-3xl border border-gray-200"
+              className="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-gray-200"
             />
           </div>
-          <p className="text-sm text-gray-400 text-center">Based in Norway · Open to remote</p>
+          <p className="text-sm text-gray-500 text-center">Based in Norway · Open to remote</p>
 
           {/* Social links */}
           <div className="flex gap-3 justify-center mt-2">
-            <a
-              href="https://github.com/Nourasha"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline border border-gray-200 text-gray-600 text-xs font-medium px-4 py-2 rounded-full hover:border-gray-500 hover:text-gray-900 transition-colors"
-            >
+            <Button href="https://github.com/Nourasha" variant="secondary" size="sm">
               GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/nour-aboushawish-8130357b/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="no-underline border border-gray-200 text-gray-600 text-xs font-medium px-4 py-2 rounded-full hover:border-gray-500 hover:text-gray-900 transition-colors"
-            >
+            </Button>
+            <Button href="https://www.linkedin.com/in/nour-aboushawish-8130357b/" variant="secondary" size="sm">
               LinkedIn
-            </a>
+            </Button>
           </div>
         </div>
 
@@ -93,7 +81,7 @@ export default function About() {
             Hey, I'm{" "}
             <span className="italic text-gray-500">{author.name}</span>
           </h2>
-          <p className="text-xs text-gray-400 uppercase tracking-widest font-medium mb-8">
+          <p className="text-xs text-gray-500 uppercase tracking-widest font-medium mb-8">
             FULL-STACK DEVELOPER · CYBERSECURITY MASTER'S STUDENT
           </p>
 
@@ -106,12 +94,12 @@ export default function About() {
 
           {/* Skills */}
           <div className="border-t border-gray-100 pt-8">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Skills & tools</p>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Skills & tools</p>
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
                 <span
                   key={skill.name}
-                  className="bg-gray-100 border border-gray-200 rounded-lg px-3 py-1.5 text-xs font-medium text-gray-600"
+                  className="bg-gray-100 border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-600"
                 >
                   {skill.name}
                 </span>
@@ -122,19 +110,16 @@ export default function About() {
       </div>
 
       {/* CTA */}
-      <div className="bg-gray-50 border border-gray-200 rounded-3xl p-12 text-center">
+      <div className="bg-gray-50 border border-gray-200 rounded-2xl p-12 text-center">
         <h2 className="font-serif text-3xl text-gray-900 tracking-tight mb-4">
           Want to work together?
         </h2>
         <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-md mx-auto font-light">
           I'm open to freelance projects and full-time positions. Let's build something great.
         </p>
-        <a
-          href="mailto:nour.abshawish@outlook.com"
-          className="no-underline inline-block bg-gray-900 text-white text-sm font-medium px-8 py-3 rounded-full hover:bg-gray-700 transition-colors"
-        >
+        <Button href="mailto:nour.abshawish@outlook.com" size="lg">
           Send me an email
-        </a>
+        </Button>
       </div>
 
     </main>

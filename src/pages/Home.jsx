@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router";
 import sanityClient from "../lib/client";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
 import SectionIcon from "../components/SectionIcon"
 import Skills from "../components/Skills";
+import Button from "../components/Button";
 
 
 
@@ -36,19 +36,19 @@ export default function Home() {
   if (error)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+        <p className="text-gray-500 text-sm">Failed to load content. Please try again later.</p>
       </div>
     );
 
   if (!mainPost)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Loading...</p>
+        <p className="text-gray-500 text-sm">Loading...</p>
       </div>
     );
 
   return (
-    <>
+    <main>
       {/* ── HERO ── */}
       <section className="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
 
@@ -61,7 +61,7 @@ export default function Home() {
 
           <h1 className="font-serif text-5xl md:text-6xl text-gray-900 leading-tight tracking-tight mb-6">
             Hi, I'm Nour.<br />
-            <span className="text-gray-400 italic">I build for the web.</span>
+            <span className="text-gray-500 italic">I build for the web.</span>
           </h1>
 
           <p className="text-gray-500 text-lg leading-relaxed mb-10 font-light">
@@ -69,29 +69,19 @@ export default function Home() {
           </p>
 
           <div className="flex gap-3 flex-wrap">
-            <Link
-              to="/project"
-              className="no-underline bg-gray-900 text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-gray-700 transition-colors duration-150"
-            >
-              See my projects
-            </Link>
-            <Link
-              to="/about"
-              className="no-underline border border-gray-300 text-gray-700 text-sm font-normal px-6 py-3 rounded-full hover:border-gray-500 hover:text-gray-900 transition-colors duration-150"
-            >
-              About me
-            </Link>
+            <Button to="/project">See my projects</Button>
+            <Button to="/about" variant="secondary">About me</Button>
           </div>
         </div>
 
         {/* Right: profile photo */}
         <div className="flex justify-center md:justify-end">
           <div className="relative w-72 h-80">
-            <div className="absolute inset-0 bg-gray-100 rounded-3xl border border-gray-200" />
+            <div className="absolute inset-0 bg-gray-100 rounded-2xl border border-gray-200" />
             <img
               src={profilePhoto}
               alt="Nour Aboushawish"
-              className="relative w-full h-full object-cover object-top rounded-3xl"
+              className="relative w-full h-full object-cover object-top rounded-2xl"
             />
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-full px-4 py-2 text-xs font-medium text-gray-600 whitespace-nowrap shadow-sm">
               Nour Aboushawish · Developer
@@ -102,7 +92,7 @@ export default function Home() {
 
       {/* ── SKILLS GRID ── */}
       <section className="max-w-5xl mx-auto px-4 md:px-8 py-16 border-t border-gray-100">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Skills</p>
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Skills</p>
         <h2 className="font-serif text-3xl text-gray-900 tracking-tight mb-10">Tech stack</h2>
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
       <Skills />
@@ -110,8 +100,8 @@ export default function Home() {
       </section>
 
       {/* ── BIOGRAPHY ── */}
-      <main className="max-w-5xl mx-auto px-4 md:px-8 py-16 border-t border-gray-100">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Background</p>
+      <section className="max-w-5xl mx-auto px-4 md:px-8 py-16 border-t border-gray-100">
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">Background</p>
         <h2 className="font-serif text-4xl text-gray-900 tracking-tight mb-14">My story</h2>
 
         {mainPost.map((post) => (
@@ -135,7 +125,7 @@ export default function Home() {
             </div>
           </div>
         ))}
-      </main>
-    </>
+      </section>
+    </main>
   );
 }

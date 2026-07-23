@@ -12,7 +12,7 @@ export default function Skills() {
                 {skill.icon}
               </div>
               <span className="text-xs font-medium text-gray-800 text-center leading-tight">{skill.name}</span>
-              <span className="text-xs text-gray-400 text-center leading-tight hidden sm:block">{skill.level}</span>
+              <span className="text-xs text-gray-500 text-center leading-tight hidden sm:block">{skill.level}</span>
             </div>
           ))}
         </>

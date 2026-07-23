@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import sanityClient from "../lib/client";
+import PageHeader from "../components/PageHeader";
 
 export default function Project() {
   const [projectData, setProject] = useState(null);
@@ -29,28 +30,25 @@ export default function Project() {
   if (error)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Failed to load content. Please try again later.</p>
+        <p className="text-gray-500 text-sm">Failed to load content. Please try again later.</p>
       </div>
     );
 
   if (!projectData)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Loading...</p>
+        <p className="text-gray-500 text-sm">Loading...</p>
       </div>
     );
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
 
-      {/* Header */}
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Work</p>
-      <h1 className="font-serif text-4xl text-gray-900 tracking-tight mb-4">
-        Selected Projects
-      </h1>
-      <p className="text-gray-500 text-base font-light mb-16 max-w-lg">
-        A collection of things I've built — from personal tools to full web applications.
-      </p>
+      <PageHeader
+        eyebrow="Work"
+        title="Selected Projects"
+        intro="A collection of things I've built — from personal tools to full web applications."
+      />
 
       {/* Cards */}
       <div className="grid md:grid-cols-2 gap-5">
@@ -71,8 +69,7 @@ export default function Project() {
                     Featured
                   </span>
                 )}
-                <span className={`text-xs font-medium uppercase tracking-widest
-                  ${project.featured ? "text-gray-500" : "text-gray-400"}`}>
+                <span className="text-xs font-medium uppercase tracking-widest text-gray-500">
                   {project.projectType === "personal" ? "Personal"
                     : project.projectType === "client" ? "Client"
                     : project.projectType === "school" ? "School"
@@ -80,7 +77,7 @@ export default function Project() {
                 </span>
               </div>
               {project.date && (
-                <span className={`text-xs ${project.featured ? "text-gray-600" : "text-gray-400"}`}>
+                <span className={`text-xs ${project.featured ? "text-gray-600" : "text-gray-500"}`}>
                   {new Date(project.date).getFullYear() || ""}
                 </span>
               )}
@@ -91,17 +88,23 @@ export default function Project() {
               ${project.featured ? "text-white" : "text-gray-900"}`}>
               {project.link ? (
                 <a href={project.link} target="_blank" rel="noopener noreferrer"
-                  className={`no-underline hover:opacity-70 transition-opacity
-                    ${project.featured ? "text-white" : "text-gray-900"}`}>
+                  className={`inline-block no-underline border-b-2 pb-1 transition-all duration-300 ease-out hover:pb-0
+                    ${project.featured
+                      ? "text-white border-gray-700 hover:border-white"
+                      : "text-gray-900 border-gray-300 hover:border-gray-900"}`}>
                   {project.title}
                 </a>
-              ) : project.title}
+              ) : (
+                <span className={`inline-block border-b-2 pb-1
+                  ${project.featured ? "border-gray-800" : "border-gray-200"}`}>
+                  {project.title}
+                </span>
+              )}
             </h2>
 
             {/* Company */}
             {project.place && (
-              <p className={`text-xs font-medium mb-4
-                ${project.featured ? "text-gray-500" : "text-gray-400"}`}>
+              <p className="text-xs font-medium mb-4 text-gray-500">
                 {project.place}
               </p>
             )}
@@ -120,7 +123,7 @@ export default function Project() {
               <div className="flex gap-2 flex-wrap">
                 {project.tags?.map((tag) => (
                   <span key={tag}
-                    className={`text-xs font-medium px-2.5 py-1 rounded-md
+                    className={`text-xs font-medium px-2.5 py-1 rounded-full
                       ${project.featured
                         ? "bg-gray-800 text-gray-400"
                         : "bg-gray-100 text-gray-500"}`}>
@@ -135,10 +138,10 @@ export default function Project() {
                   href={project.githublink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`no-underline text-xs font-medium transition-colors whitespace-nowrap ml-4
+                  className={`no-underline text-xs font-medium transition-colors duration-150 whitespace-nowrap ml-4
                     ${project.featured
                       ? "text-gray-500 hover:text-white"
-                      : "text-gray-400 hover:text-gray-900"}`}
+                      : "text-gray-500 hover:text-gray-900"}`}
                 >
                   View code →
                 </a>

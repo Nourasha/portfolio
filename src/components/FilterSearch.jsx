@@ -7,7 +7,7 @@ export default function FilterSearch({ event, search }) {
 
   if (!inputData?.length) {
     return (
-      <p className="text-sm text-gray-400 py-4">
+      <p className="text-sm text-gray-500 py-4">
         No posts match "{search}"
       </p>
     );

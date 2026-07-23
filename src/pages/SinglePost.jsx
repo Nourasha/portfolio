@@ -37,7 +37,7 @@ export default function SinglePost() {
   if (!singlePost)
     return (
       <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-400 text-sm">Loading...</p>
+        <p className="text-gray-500 text-sm">Loading...</p>
       </div>
     );
 
@@ -47,7 +47,7 @@ export default function SinglePost() {
       {/* Back link */}
       <Link
         to="/post"
-        className="no-underline inline-flex items-center gap-2 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-12"
+        className="no-underline inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors duration-150 mb-12"
       >
         ← Back to posts
       </Link>
@@ -61,7 +61,7 @@ export default function SinglePost() {
               {singlePost.categories.map((cat) => (
                 <span
                   key={cat.title}
-                  className="text-xs font-medium uppercase tracking-widest text-gray-400"
+                  className="text-xs font-medium uppercase tracking-widest text-gray-500"
                 >
                   {cat.title}
                 </span>
@@ -88,7 +88,7 @@ export default function SinglePost() {
                 {singlePost.authorName}
               </p>
               {singlePost.publishedAt && (
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-gray-500">
                   {new Date(singlePost.publishedAt).toLocaleDateString("no-NO", {
                     year: "numeric",
                     month: "long",

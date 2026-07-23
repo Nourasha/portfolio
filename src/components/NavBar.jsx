@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router";
 import { FaBars, FaTimes } from "react-icons/fa";
 import SocialButtons from "./SocialButtons";
+import Button from "./Button";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function NavBar() {
   const activeClass =
     "no-underline text-sm font-medium text-gray-900 border-b border-gray-900 pb-0.5";
   const inactiveClass =
-    "no-underline text-sm font-normal text-gray-400 hover:text-gray-900 transition-colors duration-150";
+    "no-underline text-sm font-normal text-gray-500 hover:text-gray-900 transition-colors duration-150";
 
   return (
     <header className="sticky top-0 z-20 bg-white border-b border-gray-200">
@@ -40,12 +41,9 @@ export default function NavBar() {
           <div className="hidden md:flex">
             <SocialButtons />
           </div>
-          <NavLink
-            to="/about"
-            className="hidden md:inline-block no-underline bg-gray-900 text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-gray-700 transition-colors duration-150"
-          >
+          <Button to="/about" size="nav" className="hidden md:inline-block">
             Hire me
-          </NavLink>
+          </Button>
 
           {/* Mobile hamburger */}
           <button
@@ -72,13 +70,9 @@ export default function NavBar() {
           </NavLink>
           <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
             <SocialButtons />
-            <NavLink
-              to="/about"
-              className="no-underline bg-gray-900 text-white text-sm font-medium px-5 py-2 rounded-full"
-              onClick={closeMenu}
-            >
+            <Button to="/about" size="nav" onClick={closeMenu}>
               Hire me
-            </NavLink>
+            </Button>
           </div>
         </div>
       )}
