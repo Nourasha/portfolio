@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import sanityClient from "../lib/client";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 export default function Project() {
   const [projectData, setProject] = useState(null);
@@ -43,6 +44,11 @@ export default function Project() {
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
+      <Seo
+        title="Projects"
+        description="Selected projects by Nour Aboushawish — a collection of things I've built, from personal tools to full web applications."
+        path="/project"
+      />
 
       <PageHeader
         eyebrow="Work"

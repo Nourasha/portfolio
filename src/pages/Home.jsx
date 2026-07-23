@@ -5,6 +5,7 @@ import profilePhoto from "../assets/images/nour-photo.jpg";
 import SectionIcon from "../components/SectionIcon"
 import Skills from "../components/Skills";
 import Button from "../components/Button";
+import Seo from "../components/Seo";
 
 
 
@@ -49,6 +50,12 @@ export default function Home() {
 
   return (
     <main>
+      <Seo
+        title="Home"
+        description="Nour Aboushawish — Full-stack developer and cybersecurity master's student based in Norway. React, Node.js, TypeScript, Tailwind CSS."
+        path="/"
+      />
+
       {/* ── HERO ── */}
       <section className="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
 

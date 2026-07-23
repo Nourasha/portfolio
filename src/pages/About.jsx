@@ -5,6 +5,7 @@ import profilePhoto from "../assets/images/nour-photo.jpg";
 import skills from "../data/skills";
 import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
 
 export default function About() {
   const [author, setAuthor] = useState(null);
@@ -47,6 +48,11 @@ export default function About() {
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
+      <Seo
+        title="About"
+        description="About Nour Aboushawish — full-stack developer and cybersecurity master's student based in Norway."
+        path="/about"
+      />
 
       <PageHeader eyebrow="About me" title="The person behind the code" />
 
