@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://nourab.netlify.app";
+const SITE_URL = "https://nourab.dev";
 const SITE_NAME = "Nour.dev";
 
 export default function Seo({ title, description, path, noindex = false }) {
