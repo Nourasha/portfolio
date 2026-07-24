@@ -1,17 +1,19 @@
 import author from './author';
 import blockContent from './blockContent';
 import category from './category';
-import header from './header';
-import mainPost from './mainPost';
 import post from './post';
+import processStep from './processStep';
 import project from './project';
+import service from './service';
+import skill from './skill';
 
 export const schemaTypes = [
   author,
   blockContent,
   category,
-  header,
-  mainPost,
   post,
+  processStep,
   project,
+  service,
+  skill,
 ];

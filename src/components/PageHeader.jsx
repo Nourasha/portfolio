@@ -1,12 +1,14 @@
 export default function PageHeader({ eyebrow, title, intro }) {
   return (
     <>
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">{eyebrow}</p>
-      <h1 className={`font-serif text-4xl md:text-5xl text-gray-900 tracking-tight ${intro ? "mb-4" : "mb-16"}`}>
+      <span className="inline-block bg-accent/10 text-accent text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+        {eyebrow}
+      </span>
+      <h1 className={`font-display text-4xl md:text-5xl font-extrabold text-ink tracking-tight ${intro ? "mb-4" : "mb-16"}`}>
         {title}
       </h1>
       {intro && (
-        <p className="text-gray-500 text-base font-light mb-16 max-w-lg">{intro}</p>
+        <p className="text-muted text-base mb-16 max-w-lg">{intro}</p>
       )}
     </>
   );

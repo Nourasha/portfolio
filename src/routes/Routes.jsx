@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Project from '../pages/Project';
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import NotFound from "../pages/NotFound";
 
 
@@ -19,6 +20,7 @@ export default function RoutePage () {
         <Route element={<Project/>} path='/project' />
         <Route element={<NotFound/>} path='*' />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 

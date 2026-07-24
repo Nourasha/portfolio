@@ -4,12 +4,12 @@ const SIZES = {
   sm: "px-4 py-2 text-xs",
   nav: "px-5 py-2 text-sm",
   md: "px-6 py-3 text-sm",
-  lg: "px-8 py-3 text-sm",
+  lg: "px-8 py-3.5 text-base",
 };
 
 const VARIANTS = {
-  primary: "bg-gray-900 text-white hover:bg-gray-700",
-  secondary: "border border-gray-300 text-gray-700 hover:border-gray-500 hover:text-gray-900",
+  primary: "bg-accent text-white shadow-md shadow-accent/25 hover:bg-accent-light hover:shadow-lg hover:shadow-accent/30",
+  secondary: "border-2 border-line text-ink hover:border-accent hover:text-accent",
 };
 
 export default function Button({
@@ -21,7 +21,7 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = `no-underline inline-block font-medium rounded-full transition-colors duration-150 ${SIZES[size]} ${VARIANTS[variant]} ${className}`;
+  const classes = `no-underline inline-block font-semibold rounded-full transition-all duration-150 ${SIZES[size]} ${VARIANTS[variant]} ${className}`;
 
   if (to) {
     return (

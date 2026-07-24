@@ -14,7 +14,14 @@ export default defineType({
       name: 'featured',
       title: 'Featured Project',
       type: 'boolean',
-      description: 'Vis dette prosjektet øverst og større enn de andre',
+      description: 'Vis dette prosjektet øverst og større enn de andre på Projects-siden',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'showOnHome',
+      title: 'Show on homepage',
+      type: 'boolean',
+      description: 'Vis dette prosjektet i "Featured work"-seksjonen på forsiden',
       initialValue: false,
     }),
     defineField({

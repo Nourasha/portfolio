@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,9 +11,9 @@ html {
 }
 
 body {
-  background-color: #ffffff;
-  color: #111827;
-  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: theme('colors.bg');
+  color: theme('colors.ink');
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* ── Focus states ── */
@@ -21,13 +21,9 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #111827;
+  outline: 2px solid theme('colors.accent');
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-.font-serif {
-  font-family: 'DM Serif Display', Georgia, serif;
 }
 
 /* ── Prose bilder ── */
@@ -37,7 +33,15 @@ input:focus-visible,
   border-radius: 16px;
 }
 
-/* ── Main bakgrunn (oppdatert til hvit/clean) ── */
 main {
-  background-color: #ffffff;
+  background-color: theme('colors.bg');
+}
+
+/* ── Motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-float-delay {
+    animation: none;
+  }
 }
