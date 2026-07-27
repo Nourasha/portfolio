@@ -3,6 +3,7 @@ import Hero from "../components/home/Hero";
 import WhatIDo from "../components/home/WhatIDo";
 import FeaturedWork from "../components/home/FeaturedWork";
 import HowIBuild from "../components/home/HowIBuild";
+import EducationCertifications from "../components/home/EducationCertifications";
 import TechStack from "../components/home/TechStack";
 import ClosingCTA from "../components/home/ClosingCTA";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <WhatIDo />
       <FeaturedWork />
       <HowIBuild />
+      <EducationCertifications />
       <TechStack />
       <ClosingCTA />
     </main>

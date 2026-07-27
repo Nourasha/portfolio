@@ -1,15 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import sanityClient from "../../lib/client";
 
-const ICON_COLORS = {
-  icon1: "bg-icon1",
-  icon2: "bg-icon2",
-  icon3: "bg-icon3",
-  icon4: "bg-icon4",
-  icon5: "bg-icon5",
-  icon6: "bg-icon6",
-};
-
 const BORDER_COLORS = {
   icon1: "border-t-icon1",
   icon2: "border-t-icon2",
@@ -52,9 +43,8 @@ export default function WhatIDo() {
         {whatIDo?.map((item) => (
           <div
             key={item.title}
-            className={`bg-white border border-line rounded-2xl p-4 sm:p-6 md:p-7 shadow-sm border-t-4 md:border-t md:border-t-line ${BORDER_COLORS[item.color] ?? "border-t-icon1"}`}
+            className={`bg-white border border-line rounded-2xl p-4 sm:p-6 md:p-7 shadow-sm border-t-4 ${BORDER_COLORS[item.color] ?? "border-t-icon1"}`}
           >
-            <div className={`hidden md:block w-11 h-11 rounded-xl ${ICON_COLORS[item.color] ?? "bg-icon1"} mb-5`} />
             <h3 className="font-display font-bold text-ink text-base sm:text-lg mb-2">{item.title}</h3>
             <p className="text-muted text-sm leading-relaxed">{item.description}</p>
           </div>

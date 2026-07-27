@@ -39,7 +39,7 @@ export default function Footer() {
             <a href="mailto:nour.abshawish@outlook.com" className="no-underline text-navy-muted hover:text-white transition-colors">
               nour.abshawish@outlook.com
             </a>
-            <span>Oslo, Norway</span>
+            <span>Rakkestad, Norway</span>
           </div>
         </div>
       </div>

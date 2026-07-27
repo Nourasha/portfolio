@@ -39,9 +39,12 @@ export default function FeaturedWork() {
         {error && <p className="text-navy-muted text-sm text-center">Failed to load projects.</p>}
 
         {projects && (
-          <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+          <div className={projects.length === 1 ? "flex justify-center" : "grid md:grid-cols-3 gap-4 md:gap-5"}>
             {projects.map((project) => (
-              <div key={project.title} className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7">
+              <div
+                key={project.title}
+                className={`bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 ${projects.length === 1 ? "w-full max-w-md" : ""}`}
+              >
                 {project.featured && (
                   <span className="inline-block bg-accent/20 text-accent-light text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4">
                     Featured
