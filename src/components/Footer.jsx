@@ -1,5 +1,7 @@
 import { NavLink } from "react-router";
 import SocialButtons from "./SocialButtons";
+import Logo from "./Logo";
+import { EMAIL, NAV_LINKS } from "../lib/constants";
 
 export default function Footer() {
   return (
@@ -8,13 +10,8 @@ export default function Footer() {
 
         {/* Brand + blurb */}
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center font-display font-extrabold text-sm">
-              N
-            </span>
-            <span className="font-display text-lg font-extrabold text-white tracking-tight">
-              Nour.dev
-            </span>
+          <div className="mb-4">
+            <Logo light />
           </div>
           <p className="text-sm leading-relaxed max-w-sm mb-6">
             Full-stack developer and cybersecurity master's student based in Norway, building clean, fast, and secure web applications.
@@ -26,9 +23,11 @@ export default function Footer() {
         <div>
           <p className="font-display text-sm font-bold text-white mb-4">Quick links</p>
           <nav className="flex flex-col gap-3 text-sm">
-            <NavLink to="/" className="no-underline text-navy-muted hover:text-white transition-colors">Home</NavLink>
-            <NavLink to="/project" className="no-underline text-navy-muted hover:text-white transition-colors">Projects</NavLink>
-            <NavLink to="/about" className="no-underline text-navy-muted hover:text-white transition-colors">About</NavLink>
+            {NAV_LINKS.map(({ to, label, end }) => (
+              <NavLink key={to} to={to} end={end} className="no-underline text-navy-muted hover:text-white transition-colors">
+                {label}
+              </NavLink>
+            ))}
           </nav>
         </div>
 
@@ -36,8 +35,8 @@ export default function Footer() {
         <div>
           <p className="font-display text-sm font-bold text-white mb-4">Contact</p>
           <div className="flex flex-col gap-3 text-sm">
-            <a href="mailto:nour.abshawish@outlook.com" className="no-underline text-navy-muted hover:text-white transition-colors">
-              nour.abshawish@outlook.com
+            <a href={`mailto:${EMAIL}`} className="no-underline text-navy-muted hover:text-white transition-colors">
+              {EMAIL}
             </a>
             <span>Rakkestad, Norway</span>
           </div>

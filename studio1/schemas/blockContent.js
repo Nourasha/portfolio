@@ -41,6 +41,14 @@ export default defineType({
     {
       type: 'image',
       options: { hotspot: true },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          description: 'Describe the image for screen readers and search engines',
+          type: 'string',
+        },
+      ],
     },
   ],
 });

@@ -1,49 +1,28 @@
-import { useEffect, useState, useRef } from "react";
-import sanityClient from "../../lib/client";
+import useSanityQuery from "../../lib/useSanityQuery";
+import SectionHeading from "../SectionHeading";
 
 export default function FeaturedWork() {
-  const [projects, setProjects] = useState(null);
-  const [error, setError] = useState(false);
-  const mountedRef = useRef(true);
+  const { data: projects, error } = useSanityQuery(
+    `*[_type == "project" && showOnHome == true] | order(date desc) {
+      title, date, description, link, tags, featured
+    }`
+  );
 
-  useEffect(() => {
-    mountedRef.current = true;
-    sanityClient
-      .fetch(`*[_type == "project" && showOnHome == true] | order(date desc) {
-        title, date, description, link, tags, featured
-      }`)
-      .then((data) => {
-        if (mountedRef.current) setProjects(data);
-      })
-      .catch(() => {
-        if (mountedRef.current) setError(true);
-      });
-
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
+  const isSingle = projects?.length === 1;
 
   return (
     <section className="bg-navy">
       <div className="max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-          <span className="inline-block bg-white/10 text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-            Featured work
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Built, shipped, and in use
-          </h2>
-        </div>
+        <SectionHeading dark eyebrow="Featured work" title="Built, shipped, and in use" />
 
         {error && <p className="text-navy-muted text-sm text-center">Failed to load projects.</p>}
 
         {projects && (
-          <div className={projects.length === 1 ? "flex justify-center" : "grid md:grid-cols-3 gap-4 md:gap-5"}>
+          <div className={isSingle ? "flex justify-center" : "grid md:grid-cols-3 gap-4 md:gap-5"}>
             {projects.map((project) => (
-              <div
+              <article
                 key={project.title}
-                className={`bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 ${projects.length === 1 ? "w-full max-w-md" : ""}`}
+                className={`bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 ${isSingle ? "w-full max-w-md" : ""}`}
               >
                 {project.featured && (
                   <span className="inline-block bg-accent/20 text-accent-light text-xs font-semibold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4">
@@ -64,7 +43,7 @@ export default function FeaturedWork() {
                     View project →
                   </a>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         )}

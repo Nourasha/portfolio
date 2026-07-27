@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from "react";
-import sanityClient from "../../lib/client";
+import useSanityQuery from "../../lib/useSanityQuery";
+import SectionHeading from "../SectionHeading";
 
 const BORDER_COLORS = {
   icon1: "border-t-icon1",
@@ -11,45 +11,28 @@ const BORDER_COLORS = {
 };
 
 export default function WhatIDo() {
-  const [whatIDo, setWhatIDo] = useState(null);
-  const mountedRef = useRef(true);
-
-  useEffect(() => {
-    mountedRef.current = true;
-    sanityClient
-      .fetch(`*[_type == "service"] | order(order asc){ title, description, color }`)
-      .then((data) => {
-        if (mountedRef.current) setWhatIDo(data);
-      })
-      .catch(() => {});
-
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
+  const { data: whatIDo } = useSanityQuery(
+    `*[_type == "service"] | order(order asc){ title, description, color }`
+  );
 
   return (
     <section className="max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
-      <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
-        <span className="inline-block bg-accent/10 text-accent text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-          What I do
-        </span>
-        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-ink tracking-tight">
-          Everywhere from data model to <span className="text-accent">deployed product</span>
-        </h2>
-      </div>
+      <SectionHeading
+        eyebrow="What I do"
+        title={<>Everywhere from data model to <span className="text-accent">deployed product</span></>}
+      />
 
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
+      <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
         {whatIDo?.map((item) => (
-          <div
+          <li
             key={item.title}
             className={`bg-white border border-line rounded-2xl p-4 sm:p-6 md:p-7 shadow-sm border-t-4 ${BORDER_COLORS[item.color] ?? "border-t-icon1"}`}
           >
             <h3 className="font-display font-bold text-ink text-base sm:text-lg mb-2">{item.title}</h3>
             <p className="text-muted text-sm leading-relaxed">{item.description}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

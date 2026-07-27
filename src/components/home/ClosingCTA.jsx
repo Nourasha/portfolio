@@ -1,4 +1,5 @@
 import Button from "../Button";
+import { EMAIL } from "../../lib/constants";
 
 export default function ClosingCTA() {
   return (
@@ -11,7 +12,7 @@ export default function ClosingCTA() {
           Open to freelance projects and full-time roles. Reach out and let's talk about what you're building.
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
-          <Button href="mailto:nour.abshawish@outlook.com">Hire me</Button>
+          <Button href={`mailto:${EMAIL}`}>Hire me</Button>
           <Button to="/project" variant="secondary" className="!text-white !border-white/30 hover:!border-white">
             See my work
           </Button>

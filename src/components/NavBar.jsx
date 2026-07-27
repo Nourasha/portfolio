@@ -3,6 +3,8 @@ import { NavLink } from "react-router";
 import { FaBars, FaTimes } from "react-icons/fa";
 import SocialButtons from "./SocialButtons";
 import Button from "./Button";
+import Logo from "./Logo";
+import { NAV_LINKS } from "../lib/constants";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,26 +21,17 @@ export default function NavBar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 no-underline">
-          <span className="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center font-display font-extrabold text-sm">
-            N
-          </span>
-          <span className="font-display text-lg font-extrabold text-ink tracking-tight">
-            Nour.dev
-          </span>
+        <NavLink to="/" className="no-underline">
+          <Logo />
         </NavLink>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
-          <NavLink to="/" end className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-            Home
-          </NavLink>
-          <NavLink to="/project" className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-            Projects
-          </NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? activeClass : inactiveClass}>
-            About
-          </NavLink>
+        <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
+          {NAV_LINKS.map(({ to, label, end }) => (
+            <NavLink key={to} to={to} end={end} className={({ isActive }) => isActive ? activeClass : inactiveClass}>
+              {label}
+            </NavLink>
+          ))}
         </nav>
 
         {/* Høyre side */}
@@ -64,15 +57,13 @@ export default function NavBar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-5 px-6 py-6 bg-white border-t border-line">
-          <NavLink to="/" end className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
-            Home
-          </NavLink>
-          <NavLink to="/project" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
-            Projects
-          </NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
-            About
-          </NavLink>
+          <nav className="flex flex-col gap-5" aria-label="Mobile">
+            {NAV_LINKS.map(({ to, label, end }) => (
+              <NavLink key={to} to={to} end={end} className={({ isActive }) => isActive ? activeClass : inactiveClass} onClick={closeMenu}>
+                {label}
+              </NavLink>
+            ))}
+          </nav>
           <div className="pt-2 border-t border-line flex items-center justify-between">
             <SocialButtons />
             <Button to="/about" size="nav" onClick={closeMenu}>

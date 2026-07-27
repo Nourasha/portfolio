@@ -1,49 +1,20 @@
-import { useEffect, useState, useRef } from "react";
-import sanityClient from "../lib/client";
+import useSanityQuery from "../lib/useSanityQuery";
 import BlockText from "../components/BlockContent";
 import profilePhoto from "../assets/images/nour-photo.jpg";
 import Button from "../components/Button";
 import PageHeader from "../components/PageHeader";
+import PageStatus from "../components/PageStatus";
 import Seo from "../components/Seo";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../lib/constants";
 
 export default function About() {
-  const [author, setAuthor] = useState(null);
-  const [error, setError] = useState(false);
-  const mountedRef = useRef(true);
+  const { data: authors, error } = useSanityQuery(
+    `*[_type == "author"]{ name, bio, "authorImage": image.asset->url }`
+  );
+  const author = authors?.[0];
 
-  useEffect(() => {
-    mountedRef.current = true;
-    sanityClient
-      .fetch(`*[_type == "author"]{
-        name,
-        bio,
-        "authorImage": image.asset->url
-      }`)
-      .then((data) => {
-        if (mountedRef.current) setAuthor(data[0]);
-      })
-      .catch(() => {
-        if (mountedRef.current) setError(true);
-      });
-
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  if (error)
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-muted text-sm">Failed to load content. Please try again later.</p>
-      </div>
-    );
-
-  if (!author)
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-muted text-sm">Loading...</p>
-      </div>
-    );
+  if (error) return <PageStatus>Failed to load content. Please try again later.</PageStatus>;
+  if (!author) return <PageStatus>Loading...</PageStatus>;
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
@@ -71,10 +42,10 @@ export default function About() {
 
           {/* Social links */}
           <div className="flex gap-3 justify-center mt-2">
-            <Button href="https://github.com/Nourasha" variant="secondary" size="sm">
+            <Button href={GITHUB_URL} variant="secondary" size="sm">
               GitHub
             </Button>
-            <Button href="https://www.linkedin.com/in/nour-aboushawish-8130357b/" variant="secondary" size="sm">
+            <Button href={LINKEDIN_URL} variant="secondary" size="sm">
               LinkedIn
             </Button>
           </div>
@@ -106,7 +77,7 @@ export default function About() {
         <p className="text-navy-muted text-base leading-relaxed mb-8 max-w-md mx-auto">
           I'm open to freelance projects and full-time positions. Let's build something great.
         </p>
-        <Button href="mailto:nour.abshawish@outlook.com" size="lg">
+        <Button href={`mailto:${EMAIL}`} size="lg">
           Send me an email
         </Button>
       </div>
