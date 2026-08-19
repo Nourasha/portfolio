@@ -30,7 +30,7 @@ export default function FeaturedWork() {
                   </span>
                 )}
                 <h3 className="font-display font-bold text-white text-lg mb-2">{project.title}</h3>
-                <p className="text-navy-muted text-sm leading-relaxed mb-5">{project.description}</p>
+                <p className="text-navy-muted text-sm leading-relaxed mb-5 whitespace-pre-line">{project.description}</p>
                 <div className="flex gap-2 flex-wrap mb-5">
                   {project.tags?.map((tag) => (
                     <span key={tag} className="text-xs text-navy-muted bg-white/5 border border-white/10 rounded-full px-2.5 py-1">

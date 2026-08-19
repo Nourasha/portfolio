@@ -52,7 +52,7 @@ export default function ProjectCard({ project }) {
       )}
 
       {/* Description */}
-      <p className="text-sm leading-relaxed mb-6 text-muted">
+      <p className="text-sm leading-relaxed mb-6 text-muted whitespace-pre-line">
         {project.description}
       </p>
 
