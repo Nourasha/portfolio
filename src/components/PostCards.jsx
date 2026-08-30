@@ -1,10 +1,10 @@
-import { Link } from "react-router";
+import Link from "next/link";
 
 export default function PostCards({ title, slug, publishedAt, mainImage, authorName, categories }) {
   return (
     <article>
       <Link
-        to={"/post/" + slug.current}
+        href={"/post/" + slug.current}
         className="no-underline block group"
       >
         {/* Image */}

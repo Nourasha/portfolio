@@ -1,6 +1,9 @@
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 [[headers]]
   for = "/*"
@@ -9,4 +12,6 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.sanity.io; connect-src 'self' https://*.sanity.io; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"
+    # 'unsafe-inline' in script-src: Next inlines its RSC bootstrap payload in the HTML.
+    # Tightening this requires a per-request nonce from middleware, which opts pages out of static rendering.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.sanity.io; connect-src 'self' https://*.sanity.io; object-src 'none'; base-uri 'self'; frame-ancestors 'self'"

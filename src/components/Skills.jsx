@@ -1,13 +1,12 @@
-import useSanityQuery from "../lib/useSanityQuery";
-import { SKILL_ICONS } from "../lib/skillIcons";
+import sanityClient from "@/lib/client";
+import { SKILL_ICONS } from "@/lib/skillIcons";
 
-export default function Skills() {
-  const { data: skills, error } = useSanityQuery(
+export default async function Skills() {
+  const skills = await sanityClient.fetch(
     `*[_type == "skill"] | order(order asc){ name, icon }`
   );
 
-  if (error) return <p className="text-muted text-xs">Failed to load skills.</p>;
-  if (!skills) return null;
+  if (!skills?.length) return null;
 
   const isOrphanLast = skills.length % 3 === 1;
 

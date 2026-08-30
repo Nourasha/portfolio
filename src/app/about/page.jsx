@@ -1,29 +1,31 @@
-import useSanityQuery from "../lib/useSanityQuery";
-import BlockText from "../components/BlockContent";
-import profilePhoto from "../assets/images/nour-photo.jpg";
-import Button from "../components/Button";
-import PageHeader from "../components/PageHeader";
-import PageStatus from "../components/PageStatus";
-import Seo from "../components/Seo";
-import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../lib/constants";
+import Image from "next/image";
+import BlockText from "@/components/BlockContent";
+import Button from "@/components/Button";
+import PageHeader from "@/components/PageHeader";
+import PageStatus from "@/components/PageStatus";
+import sanityClient from "@/lib/client";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import profilePhoto from "@/assets/images/nour-photo.jpg";
 
-export default function About() {
-  const { data: authors, error } = useSanityQuery(
+export const revalidate = 3600;
+
+export const metadata = {
+  title: "About",
+  description:
+    "About Nour Aboushawish — full-stack developer and cybersecurity master's student based in Norway.",
+  alternates: { canonical: "/about" },
+};
+
+export default async function About() {
+  const authors = await sanityClient.fetch(
     `*[_type == "author"]{ name, bio, "authorImage": image.asset->url }`
   );
   const author = authors?.[0];
 
-  if (error) return <PageStatus>Failed to load content. Please try again later.</PageStatus>;
-  if (!author) return <PageStatus>Loading...</PageStatus>;
+  if (!author) return <PageStatus>Failed to load content. Please try again later.</PageStatus>;
 
   return (
     <main className="max-w-5xl mx-auto px-8 py-20">
-      <Seo
-        title="About"
-        description="About Nour Aboushawish — full-stack developer and cybersecurity master's student based in Norway."
-        path="/about"
-      />
-
       <PageHeader eyebrow="About me" title="The person behind the code" />
 
       {/* Main grid: photo left, text right */}
@@ -32,9 +34,10 @@ export default function About() {
         {/* Photo column */}
         <div className="md:col-span-2 flex flex-col gap-4">
           <div className="relative">
-            <img
+            <Image
               src={profilePhoto}
               alt={author.name}
+              priority
               className="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-line shadow-sm"
             />
           </div>

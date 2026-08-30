@@ -1,5 +1,5 @@
 import { SocialIcon } from "react-social-icons";
-import { GITHUB_URL, LINKEDIN_URL } from "../lib/constants";
+import { GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
 
 export default function SocialButtons({ variant = "light" }) {
   const colors = variant === "dark"

@@ -1,12 +1,19 @@
-import useSanityQuery from "../../lib/useSanityQuery";
+import sanityClient from "@/lib/client";
 import SectionHeading from "../SectionHeading";
 
-export default function FeaturedWork() {
-  const { data: projects, error } = useSanityQuery(
-    `*[_type == "project" && showOnHome == true] | order(date desc) {
-      title, date, description, link, tags, featured
-    }`
-  );
+export default async function FeaturedWork() {
+  let projects = null;
+  let error = false;
+
+  try {
+    projects = await sanityClient.fetch(
+      `*[_type == "project" && showOnHome == true] | order(date desc) {
+        title, date, description, link, tags, featured
+      }`
+    );
+  } catch {
+    error = true;
+  }
 
   const isSingle = projects?.length === 1;
 

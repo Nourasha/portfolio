@@ -1,4 +1,4 @@
-import useSanityQuery from "../../lib/useSanityQuery";
+import sanityClient from "@/lib/client";
 import SectionHeading from "../SectionHeading";
 
 const BORDER_COLORS = {
@@ -10,8 +10,8 @@ const BORDER_COLORS = {
   icon6: "border-t-icon6",
 };
 
-export default function WhatIDo() {
-  const { data: whatIDo } = useSanityQuery(
+export default async function WhatIDo() {
+  const whatIDo = await sanityClient.fetch(
     `*[_type == "service"] | order(order asc){ title, description, color }`
   );
 

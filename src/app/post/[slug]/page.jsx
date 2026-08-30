@@ -1,52 +1,54 @@
-import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
-import sanityClient from "../lib/client";
-import ImageUrlBuilder from "@sanity/image-url";
-import BlockText from "../components/BlockContent";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import BlockText from "@/components/BlockContent";
+import sanityClient from "@/lib/client";
+import { urlFor } from "@/lib/image";
 
-const builder = ImageUrlBuilder(sanityClient);
-function urlFor(source) {
-  return builder.image(source);
+export const revalidate = 3600;
+
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{
+  title,
+  _id,
+  slug,
+  mainImage{ asset->{ _id, url } },
+  body,
+  "authorName": author->name,
+  "authorImage": author->image.asset->url,
+  publishedAt,
+  categories[]->{ title }
+}`;
+
+export async function generateStaticParams() {
+  const slugs = await sanityClient.fetch(
+    `*[_type == "post" && defined(slug.current)].slug.current`
+  );
+  return slugs.map((slug) => ({ slug }));
 }
 
-export default function SinglePost() {
-  const [singlePost, setSinglePost] = useState(null);
-  const { slug } = useParams();
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = await sanityClient.fetch(POST_QUERY, { slug });
 
-  useEffect(() => {
-    // Bruker $slug parameter istedenfor string interpolation — trygt mot injection
-    sanityClient
-      .fetch(
-        `*[_type == "post" && slug.current == $slug][0]{
-          title,
-          _id,
-          slug,
-          mainImage{ asset->{ _id, url } },
-          body,
-          "authorName": author->name,
-          "authorImage": author->image.asset->url,
-          publishedAt,
-          categories[]->{ title }
-        }`,
-        { slug }
-      )
-      .then((data) => setSinglePost(data))
-      .catch(console.error);
-  }, [slug]);
+  if (!post) return {};
 
-  if (!singlePost)
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-500 text-sm">Loading...</p>
-      </div>
-    );
+  return {
+    title: post.title,
+    alternates: { canonical: `/post/${slug}` },
+  };
+}
+
+export default async function SinglePost({ params }) {
+  const { slug } = await params;
+  const singlePost = await sanityClient.fetch(POST_QUERY, { slug });
+
+  if (!singlePost) notFound();
 
   return (
     <main className="max-w-3xl mx-auto px-8 py-16">
 
       {/* Back link */}
       <Link
-        to="/post"
+        href="/post"
         className="no-underline inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors duration-150 mb-12"
       >
         ← Back to posts

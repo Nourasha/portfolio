@@ -1,4 +1,4 @@
-import useSanityQuery from "../../lib/useSanityQuery";
+import sanityClient from "@/lib/client";
 import SectionHeading from "../SectionHeading";
 
 const TYPE_LABELS = {
@@ -6,8 +6,8 @@ const TYPE_LABELS = {
   certification: "Certification",
 };
 
-export default function EducationCertifications() {
-  const { data: credentials } = useSanityQuery(
+export default async function EducationCertifications() {
+  const credentials = await sanityClient.fetch(
     `*[_type == "credential"] | order(order asc){
       title, type, institution, period, description
     }`

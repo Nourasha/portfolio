@@ -10,7 +10,6 @@ import {
   SiSanity,
   SiNodedotjs,
   SiGit,
-  SiNetlify,
 } from "react-icons/si";
 import { FaDatabase, FaNetworkWired } from "react-icons/fa";
 
@@ -28,5 +27,4 @@ export const SKILL_ICONS = {
   nodejs: SiNodedotjs,
   git: SiGit,
   api: FaNetworkWired,
-  netlify: SiNetlify,
 };

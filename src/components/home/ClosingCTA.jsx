@@ -1,5 +1,5 @@
 import Button from "../Button";
-import { EMAIL } from "../../lib/constants";
+import { EMAIL } from "@/lib/constants";
 
 export default function ClosingCTA() {
   return (

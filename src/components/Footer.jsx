@@ -1,7 +1,7 @@
-import { NavLink } from "react-router";
+import Link from "next/link";
 import SocialButtons from "./SocialButtons";
 import Logo from "./Logo";
-import { EMAIL, NAV_LINKS } from "../lib/constants";
+import { EMAIL, NAV_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -23,10 +23,10 @@ export default function Footer() {
         <div>
           <p className="font-display text-sm font-bold text-white mb-4">Quick links</p>
           <nav className="flex flex-col gap-3 text-sm">
-            {NAV_LINKS.map(({ to, label, end }) => (
-              <NavLink key={to} to={to} end={end} className="no-underline text-navy-muted hover:text-white transition-colors">
+            {NAV_LINKS.map(({ to, label }) => (
+              <Link key={to} href={to} className="no-underline text-navy-muted hover:text-white transition-colors">
                 {label}
-              </NavLink>
+              </Link>
             ))}
           </nav>
         </div>

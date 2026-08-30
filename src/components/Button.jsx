@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 
 const SIZES = {
   sm: "px-4 py-2 text-xs",
@@ -25,7 +25,7 @@ export default function Button({
 
   if (to) {
     return (
-      <Link to={to} className={classes} {...props}>
+      <Link href={to} className={classes} {...props}>
         {children}
       </Link>
     );

@@ -1,8 +1,8 @@
-import useSanityQuery from "../../lib/useSanityQuery";
+import sanityClient from "@/lib/client";
 import SectionHeading from "../SectionHeading";
 
-export default function HowIBuild() {
-  const { data: processSteps } = useSanityQuery(
+export default async function HowIBuild() {
+  const processSteps = await sanityClient.fetch(
     `*[_type == "processStep"] | order(order asc){ title, description }`
   );
 

@@ -1,4 +1,4 @@
-import PostCards from "../components/PostCards";
+import PostCards from "./PostCards";
 
 export default function FilterSearch({ event, search }) {
   const inputData = event?.filter((post) =>
