@@ -1,10 +1,7 @@
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
-
-const DESCRIPTION =
-  "Nour Aboushawish — Full-stack developer based in Norway. React, Node.js, TypeScript, Tailwind CSS.";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,7 +9,7 @@ export const metadata = {
     default: SITE_NAME,
     template: `%s — ${SITE_NAME}`,
   },
-  description: DESCRIPTION,
+  description: SITE_DESCRIPTION,
   manifest: "/manifest.json",
   icons: {
     icon: "/favicon.ico",
@@ -22,7 +19,7 @@ export const metadata = {
     type: "website",
     url: SITE_URL,
     title: "Nour Aboushawish — Developer & Security",
-    description: DESCRIPTION,
+    description: SITE_DESCRIPTION,
     images: ["/og-image.jpg"],
   },
 };

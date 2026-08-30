@@ -4,6 +4,6 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/nour-aboushawish-813035
 
 export const NAV_LINKS = [
   { to: "/", label: "Home", end: true },
-  { to: "/project", label: "Projects" },
+  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
 ];

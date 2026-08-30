@@ -5,16 +5,17 @@ import PageHeader from "@/components/PageHeader";
 import PageStatus from "@/components/PageStatus";
 import sanityClient from "@/lib/client";
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "@/lib/constants";
+import { pageMetadata } from "@/lib/site";
 import profilePhoto from "@/assets/images/nour-photo.jpg";
 
 export const revalidate = 3600;
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description:
     "About Nour Aboushawish — full-stack developer and cybersecurity master's student based in Norway.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default async function About() {
   const authors = await sanityClient.fetch(
@@ -36,7 +37,7 @@ export default async function About() {
           <div className="relative">
             <Image
               src={profilePhoto}
-              alt={author.name}
+              alt={`Portrait of ${author.name}, full-stack developer and cybersecurity master's student`}
               priority
               className="w-full aspect-[3/4] object-cover object-top rounded-2xl border border-line shadow-sm"
             />

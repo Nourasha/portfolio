@@ -31,6 +31,10 @@ const nextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: SECURITY_HEADERS }];
   },
+  async redirects() {
+    // /project was the URL until 2026-08-30; keep links in sent applications alive.
+    return [{ source: "/project", destination: "/projects", permanent: true }];
+  },
 };
 
 export default nextConfig;

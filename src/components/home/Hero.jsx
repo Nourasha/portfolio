@@ -22,7 +22,7 @@ export default function Hero() {
           </p>
 
           <div className="flex gap-3 flex-wrap">
-            <Button to="/project">See my projects</Button>
+            <Button to="/projects">See my projects</Button>
             <Button to="/about" variant="secondary" className="!text-white !border-white/30 hover:!border-white">
               About me
             </Button>

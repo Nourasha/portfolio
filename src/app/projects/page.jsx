@@ -2,15 +2,16 @@ import PageHeader from "@/components/PageHeader";
 import PageStatus from "@/components/PageStatus";
 import ProjectCard from "@/components/ProjectCard";
 import sanityClient from "@/lib/client";
+import { pageMetadata } from "@/lib/site";
 
 export const revalidate = 3600;
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Projects",
   description:
     "Selected projects by Nour Aboushawish — a collection of things I've built, from personal tools to full web applications.",
-  alternates: { canonical: "/project" },
-};
+  path: "/projects",
+});
 
 export default async function Project() {
   const projectData = await sanityClient.fetch(

@@ -13,7 +13,7 @@ export default function ClosingCTA() {
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
           <Button href={`mailto:${EMAIL}`}>Hire me</Button>
-          <Button to="/project" variant="secondary" className="!text-white !border-white/30 hover:!border-white">
+          <Button to="/projects" variant="secondary" className="!text-white !border-white/30 hover:!border-white">
             See my work
           </Button>
         </div>

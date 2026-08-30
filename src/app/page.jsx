@@ -5,16 +5,25 @@ import HowIBuild from "@/components/home/HowIBuild";
 import EducationCertifications from "@/components/home/EducationCertifications";
 import TechStack from "@/components/home/TechStack";
 import ClosingCTA from "@/components/home/ClosingCTA";
-import { SITE_NAME } from "@/lib/site";
+import { pageMetadata, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export const revalidate = 3600;
 
 export const metadata = {
+  ...pageMetadata({
+    title: "Home",
+    description: SITE_DESCRIPTION,
+    path: "/",
+  }),
   // The root layout's title template does not apply to its own segment.
   title: { absolute: `Home — ${SITE_NAME}` },
-  description:
-    "Nour Aboushawish — Full-stack developer and cybersecurity master's student based in Norway. React, Node.js, TypeScript, Tailwind CSS.",
-  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    title: "Nour Aboushawish — Developer & Security",
+    description: SITE_DESCRIPTION,
+    url: "/",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function Home() {
