@@ -3,7 +3,7 @@ import SectionHeading from "../SectionHeading";
 
 export default async function HowIBuild() {
   const processSteps = await sanityClient.fetch(
-    `*[_type == "processStep"] | order(order asc){ title, description }`
+    `*[_type == "processStep"] | order(order asc){ _id, title, description }`
   );
 
   return (
@@ -12,7 +12,7 @@ export default async function HowIBuild() {
 
       <ol className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
         {processSteps?.map((item, index) => (
-          <li key={item.title} className="text-center">
+          <li key={item._id} className="text-center">
             <div className="w-12 h-12 rounded-full bg-accent text-white font-display font-bold flex items-center justify-center mx-auto mb-4">
               {String(index + 1).padStart(2, "0")}
             </div>

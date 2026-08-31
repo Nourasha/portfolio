@@ -18,7 +18,7 @@ export default async function Project() {
     // coalesce: a project created in Studio without touching the "featured"
     // toggle has no such field, and an undefined value does not sort reliably.
     `*[_type == "project"] | order(coalesce(featured, false) desc, date desc) {
-      title, date, place, description,
+      _id, title, date, place, description,
       projectType, githublink, link, tags,
       featured
     }`
@@ -43,7 +43,7 @@ export default async function Project() {
 
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <ProjectCard key={project._id} project={project} />
         ))}
       </div>
     </main>

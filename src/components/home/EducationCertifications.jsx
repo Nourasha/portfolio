@@ -9,7 +9,7 @@ const TYPE_LABELS = {
 export default async function EducationCertifications() {
   const credentials = await sanityClient.fetch(
     `*[_type == "credential"] | order(order asc){
-      title, type, institution, period, description
+      _id, title, type, institution, period, description
     }`
   );
 
@@ -21,7 +21,7 @@ export default async function EducationCertifications() {
 
       <ul className="max-w-3xl mx-auto divide-y divide-line border-t border-b border-line">
         {credentials.map((item) => (
-          <li key={item.title} className="py-6 sm:py-7">
+          <li key={item._id} className="py-6 sm:py-7">
             <div className="flex items-center gap-3 flex-wrap mb-2">
               {item.type && (
                 <span className="text-xs font-semibold uppercase tracking-widest text-accent bg-accent/10 px-2.5 py-1 rounded-full">

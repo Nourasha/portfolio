@@ -12,7 +12,7 @@ const BORDER_COLORS = {
 
 export default async function WhatIDo() {
   const whatIDo = await sanityClient.fetch(
-    `*[_type == "service"] | order(order asc){ title, description, color }`
+    `*[_type == "service"] | order(order asc){ _id, title, description, color }`
   );
 
   return (
@@ -25,7 +25,7 @@ export default async function WhatIDo() {
       <ul className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
         {whatIDo?.map((item) => (
           <li
-            key={item.title}
+            key={item._id}
             className={`bg-white border border-line rounded-2xl p-4 sm:p-6 md:p-7 shadow-sm border-t-4 ${BORDER_COLORS[item.color] ?? "border-t-icon1"}`}
           >
             <h3 className="font-display font-bold text-ink text-base sm:text-lg mb-2">{item.title}</h3>

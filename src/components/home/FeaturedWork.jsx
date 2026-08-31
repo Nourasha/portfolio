@@ -8,7 +8,7 @@ export default async function FeaturedWork() {
   try {
     projects = await sanityClient.fetch(
       `*[_type == "project" && showOnHome == true] | order(date desc) {
-        title, date, description, link, tags, featured
+        _id, title, date, description, link, tags, featured
       }`
     );
   } catch {
@@ -28,7 +28,7 @@ export default async function FeaturedWork() {
           <div className={isSingle ? "flex justify-center" : "grid md:grid-cols-3 gap-4 md:gap-5"}>
             {projects.map((project) => (
               <article
-                key={project.title}
+                key={project._id}
                 className={`bg-white/5 border border-white/10 rounded-2xl p-6 md:p-7 ${isSingle ? "w-full max-w-md" : ""}`}
               >
                 {project.featured && (

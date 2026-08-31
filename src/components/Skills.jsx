@@ -3,7 +3,7 @@ import { SKILL_ICONS } from "@/lib/skillIcons";
 
 export default async function Skills() {
   const skills = await sanityClient.fetch(
-    `*[_type == "skill"] | order(order asc){ name, icon }`
+    `*[_type == "skill"] | order(order asc){ _id, name, icon }`
   );
 
   if (!skills?.length) return null;
@@ -17,7 +17,7 @@ export default async function Skills() {
         const isLast = index === skills.length - 1;
         return (
           <li
-            key={skill.name}
+            key={skill._id}
             className={`flex w-full sm:inline-flex sm:w-auto items-center justify-center gap-2 bg-white border border-line rounded-full px-3 py-2 text-xs sm:text-sm font-medium text-ink shadow-sm ${isOrphanLast && isLast ? "col-start-2 sm:col-start-auto" : ""}`}
           >
             {Icon && <Icon className="text-accent shrink-0" size={16} />}
