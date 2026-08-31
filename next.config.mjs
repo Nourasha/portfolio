@@ -1,9 +1,14 @@
+const isDev = process.env.NODE_ENV === "development";
+
 // 'unsafe-inline' in script-src: Next inlines its RSC bootstrap payload in the HTML.
 // Tightening this requires a per-request nonce from middleware, which opts pages
 // out of static rendering.
+//
+// 'unsafe-eval' is added in development only: React and Turbopack call eval() for
+// source maps and Fast Refresh. Production builds never get it.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: https://cdn.sanity.io",
