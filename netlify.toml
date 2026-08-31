@@ -5,6 +5,15 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# nourab.dev and nourab.netlify.app are the same Netlify project, so this is not
+# a duplicate deploy — but both hostnames answer. Send the subdomain to the
+# custom domain so there is one address in circulation.
+[[redirects]]
+  from = "https://nourab.netlify.app/*"
+  to = "https://nourab.dev/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

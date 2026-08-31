@@ -5,6 +5,7 @@ import HowIBuild from "@/components/home/HowIBuild";
 import EducationCertifications from "@/components/home/EducationCertifications";
 import TechStack from "@/components/home/TechStack";
 import ClosingCTA from "@/components/home/ClosingCTA";
+import PersonSchema from "@/components/PersonSchema";
 import { pageMetadata, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -29,6 +30,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main>
+      <PersonSchema />
       <Hero />
       <WhatIDo />
       <FeaturedWork />

@@ -15,7 +15,9 @@ export const metadata = pageMetadata({
 
 export default async function Project() {
   const projectData = await sanityClient.fetch(
-    `*[_type == "project"] | order(featured desc, date desc) {
+    // coalesce: a project created in Studio without touching the "featured"
+    // toggle has no such field, and an undefined value does not sort reliably.
+    `*[_type == "project"] | order(coalesce(featured, false) desc, date desc) {
       title, date, place, description,
       projectType, githublink, link, tags,
       featured
@@ -26,7 +28,9 @@ export default async function Project() {
     return <PageStatus>Failed to load content. Please try again later.</PageStatus>;
   }
 
-  // GROQ's boolean ordering has not been reliable in production — sort again here.
+  // Safety net for a production symptom where the featured project did not come
+  // back first. The coalesce above is the likely fix; this could not be
+  // reproduced afterwards, so the guard stays until it has survived a while.
   const projects = [...projectData].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
   return (
